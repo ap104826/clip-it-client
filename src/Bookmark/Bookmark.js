@@ -41,35 +41,42 @@ export default class Bookmark extends React.Component {
     const { title, id, modified, category_id } = this.props
     return (
       <div className='Bookmark'>
+        <img src='https://via.placeholder.com/200' width='200'/>
         <h2 className='Bookmark__title'>
           <Link to={`/bookmark/${id}`}>
             {title}
           </Link>
         </h2>
-        <button
-          className='Bookmark__delete'
-          type='button'
-          onClick={this.handleClickDelete}
-        >
-          <FontAwesomeIcon icon='trash-alt' />
-          {' '}
-          remove
-        </button>
-        <div className='Bookmark__dates'>
-          <div className='Bookmark__dates-modified'>
-            Modified
-            {' '}
+        <p className='Bookmark__description'>
+          We’ve all heard of the plank – what we may or may not realize is how many different types of
+        </p>
+        <div className='Bookmark__footer'>
+          <div className='Bookmark__category'>
             <span className='Date'>
-              {format(modified, 'Do MMM YYYY')}
+              travel
             </span>
           </div>
-          <div className='Bookmark__dates-modified'>
-            Category
-            {' '}
-            <span className='Date'>
-              {category_id}
-            </span>
+          <div className='Bookmark__footer-buttons'>
+            <button
+              className='Bookmark__delete'
+              type='button'
+              onClick={this.handleClickDelete}
+            >
+              <FontAwesomeIcon icon='share' />
+              {' '}
+              share
+            </button>
+            <button
+              className='Bookmark__delete'
+              type='button'
+              onClick={this.handleClickDelete}
+            >
+              <FontAwesomeIcon icon='trash-alt' />
+              {' '}
+              remove
+            </button>
           </div>
+          
         </div>
       </div>
     )

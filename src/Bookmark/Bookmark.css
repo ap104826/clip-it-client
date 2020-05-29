@@ -1,12 +1,17 @@
 
 .Bookmark {
-  --bookmark-height: 300px;
+  --bookmark-height: 400px;
   background-color: #D7E8D4;
-  color: #cacaca;
   height: var(--bookmark-height);
   width: 320px;
   padding: 10px 0 8px 8px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Bookmark__description {
+  flex: 1;
 }
 
 .Bookmark__delete {
@@ -17,12 +22,14 @@
   float: right;
   font-size: 12px;
   height: var(--bookmark-button-height);
-  position: relative;
+  /* position: relative; */
   top: calc((var(--bookmark-button-height) + 34px) * -1);
   transform-origin: right bottom;
-  transform: rotate(-90deg);
-  width: calc(var(--bookmark-height));
+  margin-right: 5px;
+  /* transform: rotate(-90deg); */
+  /* width: calc(var(--bookmark-height)); */
 }
+
 .Bookmark__delete:hover {
   background-color: #bd0909;
   color: white;
@@ -33,12 +40,9 @@
 .Bookmark__title {
   font-family: var(--custom-font);
   font-size: 20px;
-  margin: 0;
-  max-width: 80%;
-  min-height: 24px;
+  margin: 10px 0px;
 }
 .Bookmark__title a {
-  color: #cacaca;
   display: block;
   text-decoration: none;
 }
@@ -46,9 +50,22 @@
   color: #FFB72F;
 }
 
-.Bookmark__dates {
-  bottom: 8px;
-  color: #a7a5a5;
+.Bookmark__footer {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+}
+
+.Bookmark__footer-buttons {
+  /* padding: 10px; */
+  display: flex;
+  flex: 2;
+  justify-content: flex-end;
+}
+
+.Bookmark__category {
+  flex: 1;
   font-size: 14px;
-  position: absolute;
+  margin: auto;
+  /* position: absolute; */
 }
