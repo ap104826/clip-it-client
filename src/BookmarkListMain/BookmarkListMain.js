@@ -18,7 +18,7 @@ export default class BookmarkListMain extends React.Component {
   render() {
     const { category_id } = this.props.match.params
     const { bookmarks = [] } = this.context
-    const bookmarksForCategories = getBookmarksForCategory(bookmarks, category_id)
+    const bookmarksForCategories = getBookmarksForCategory(bookmarks, parseInt(category_id))
     return (
       <section className='BookmarkListMain'>
         <ul>
@@ -27,6 +27,7 @@ export default class BookmarkListMain extends React.Component {
               <Bookmark
                 id={bookmark.id}
                 title={bookmark.title}
+                category_id={bookmark.category_id}
                 modified={bookmark.modified}
               />
             </li>

@@ -16,29 +16,29 @@ export default class Bookmark extends React.Component {
     e.preventDefault()
     const bookmarkId = this.props.id
 
-    fetch(`${config.API_ENDPOINT}/bookmarks/${bookmarkId}`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-      },
-    })
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
-      })
-      .then(() => {
-        this.context.deleteBookmark(bookmarkId)
+    // fetch(`${config.API_ENDPOINT}/bookmarks/${bookmarkId}`, {
+    //   method: 'DELETE',
+    //   headers: {
+    //     'content-type': 'application/json'
+    //   },
+    // })
+    //   .then(res => {
+    //     if (!res.ok)
+    //       return res.json().then(e => Promise.reject(e))
+    //     return res.json()
+    //   })
+    //   .then(() => {
+    this.context.deleteBookmark(bookmarkId)
         // allow parent to perform extra behaviour
-        this.props.onDeleteBookmark(bookmarkId)
-      })
-      .catch(error => {
-        console.error({ error })
-      })
+        // this.props.onDeleteBookmark(bookmarkId)
+      // })
+      // .catch(error => {
+      //   console.error({ error })
+      // })
   }
 
   render() {
-    const { title, id, modified } = this.props
+    const { title, id, modified, category_id } = this.props
     return (
       <div className='Bookmark'>
         <h2 className='Bookmark__title'>
@@ -61,6 +61,13 @@ export default class Bookmark extends React.Component {
             {' '}
             <span className='Date'>
               {format(modified, 'Do MMM YYYY')}
+            </span>
+          </div>
+          <div className='Bookmark__dates-modified'>
+            Category
+            {' '}
+            <span className='Date'>
+              {category_id}
             </span>
           </div>
         </div>

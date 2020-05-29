@@ -6,11 +6,10 @@
     "configurations": [
         {
             "type": "chrome",
-            "port": 9229,
             "request": "attach",
             "name": "Launch Program",
-            "url": "http://localhost:3000/*",
-            "webRoot": "${workspaceCategory}/build"
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}/build"
         }
     ]
 }

@@ -18,6 +18,13 @@ class App extends Component {
     categories: [],
   };
 
+  constructor(props) {
+    super(props)
+    this.handleAddBookmark = this.handleAddBookmark.bind(this)
+    this.handleAddCategory = this.handleAddCategory.bind(this)
+    this.handleDeleteBookmark = this.handleDeleteBookmark.bind(this)
+  }
+
   componentDidMount() {
     this.setState({
       bookmarks: [
@@ -62,7 +69,7 @@ class App extends Component {
     })
   }
 
-  handleAddCategory = category => {
+  handleAddCategory = (category) => {
     this.setState({
       categories: [
         ...this.state.categories,
@@ -72,6 +79,8 @@ class App extends Component {
   }
 
   handleAddBookmark = bookmark => {
+    bookmark.title = bookmark.link
+    bookmark.modified = new Date()
     this.setState({
       bookmarks: [
         ...this.state.bookmarks,
@@ -80,7 +89,7 @@ class App extends Component {
     })
   }
 
-  handleDeletebookmark = bookmarkId => {
+  handleDeleteBookmark = bookmarkId => {
     this.setState({
       bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
     })
@@ -146,9 +155,9 @@ class App extends Component {
       categories: this.state.categories,
       addCategory: this.handleAddCategory,
       addBookmark: this.handleAddBookmark,
-      deleteBookmark: this.handleDeleteBookmark,
+      deleteBookmark: this.handleDeleteBookmark
     }
-    console.log({value})
+
     return (
       <ApiContext.Provider value={value}>
         <div className='App'>

@@ -24,9 +24,9 @@ export default class BookmarkPageMain extends React.Component {
       <section className='BookmarkPageMain'>
         <Bookmark
           id={bookmark.id}
-          name={bookmark.name}
+          title={bookmark.title}
+          category_id={bookmark.category_id}
           modified={bookmark.modified}
-          onDeletebookmark={this.handleDeleteBookmark}
         />
         <div className='BookmarkPageMain__content'>
           {bookmark.content.split(/\n \r|\n/).map((para, i) =>
