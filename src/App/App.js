@@ -8,8 +8,8 @@ import BookmarkPageMain from '../BookmarkPageMain/BookmarkPageMain'
 import AddCategory from '../AddCategory/AddCategory'
 import AddBookmark from '../AddBookmark/AddBookmark'
 import ApiContext from '../ApiContext'
-import config from '../config'
 import './App.css'
+import CircleButton from '../CircleButton/CircleButton'
 
 
 class App extends Component {
@@ -200,10 +200,29 @@ class App extends Component {
             <h1>
               <Link to='/'>ClipIt</Link>
               {' '}
-              <FontAwesomeIcon icon='check-double' />
+              <FontAwesomeIcon icon='bookmark' />
             </h1>
+            <div className='BookmarkListNav__button-wrapper'>
+              <CircleButton
+                tag={Link}
+                to='/add-category'
+                type='button'
+                className='BookmarkListNav__add-category-button'
+              >
+                <FontAwesomeIcon icon='plus' />
+                Category
+              </CircleButton>
+              <CircleButton
+                tag={Link}
+                to='/add-bookmark'
+                className='BookmarkListNav__add-category-button'
+                type='button'>
+                <FontAwesomeIcon icon='plus' />
+                Bookmark
+              </CircleButton>
+            </div>
           </header>
-          
+
           <div className="App__main-container">
             <nav className='App__nav'>
               {this.renderNavRoutes()}
@@ -212,7 +231,7 @@ class App extends Component {
               {this.renderMainRoutes()}
             </main>
           </div>
-          
+
         </div>
       </ApiContext.Provider>
     )

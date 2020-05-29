@@ -28,18 +28,7 @@ export default class BookmarkListNav extends React.Component {
             </li>
           )}
         </ul>
-        <div className='BookmarkListNav__button-wrapper'>
-          <CircleButton
-            tag={Link}
-            to='/add-category'
-            type='button'
-            className='BookmarkListNav__add-category-button'
-          >
-            <FontAwesomeIcon icon='plus' />
-            <br />
-            Category
-          </CircleButton>
-        </div>
+        
       </div>
     )
   }
