@@ -21,7 +21,7 @@ export default class BookmarkListMain extends React.Component {
     const bookmarksForCategories = getBookmarksForCategory(bookmarks, parseInt(category_id))
     return (
       <section className='BookmarkListMain'>
-        <ul>
+        <ul className="BookmarkList">
           {bookmarksForCategories.map(bookmark =>
             <li key={bookmark.id}>
               <Bookmark
