@@ -23,7 +23,7 @@ export default class BookmarkListMain extends React.Component {
       <section className='BookmarkListMain'>
         <ul className="BookmarkList">
           {bookmarksForCategories.map(bookmark =>
-            <li key={bookmark.id}>
+            <li key={bookmark.id} className='BookmarkListItem'>
               <Bookmark
                 id={bookmark.id}
                 title={bookmark.title}

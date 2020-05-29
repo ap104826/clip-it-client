@@ -1,26 +1,19 @@
-.BookmarkListMain {
-  width: 100%;
-}
-
 .BookmarkList {
   display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 0px;
+  margin-left: 20px;
+}
+
+.BookmarkListItem {
+  padding: 20px 0px;
 }
 
 .BookmarkListMain ul {
   list-style-type: none;
-  margin: 0;
-  padding: 10px;
 }
 
 .BookmarkListMain__button-container {
   max-width: 380px;
-  margin: 0 10px;
-}
-
-.BookmarkListMain__add-bookmark-button {
-  margin: 0 auto 20px;
-}
-.BookmarkListMain__add-bookmark-button:hover {
-  background-color: #29862e;
-  color: white;
 }

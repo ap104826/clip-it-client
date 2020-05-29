@@ -57,12 +57,47 @@ class App extends Component {
           "is_favorite": null,
           "link": "www.google.com",
           "modified": "2020-05-28T17:48:21.874Z"
+        },
+        {
+          "id": 7,
+          "title": "yahoo bookmark",
+          "category_id": null,
+          "thumbnail_url": null,
+          "description": null,
+          "is_favorite": null,
+          "link": "www.yahoo.com",
+          "modified": "2020-05-28T18:18:49.984Z"
+        },
+        {
+          "id": 9,
+          "title": "facebook",
+          "category_id": null,
+          "thumbnail_url": null,
+          "description": null,
+          "is_favorite": true,
+          "link": "www.yahoo.com",
+          "modified": "2020-05-28T17:38:32.868Z"
+        },
+        {
+          "id": 8,
+          "title": "facebook",
+          "category_id": null,
+          "thumbnail_url": null,
+          "description": null,
+          "is_favorite": null,
+          "link": "www.google.com",
+          "modified": "2020-05-28T17:48:21.874Z"
         }
       ],
       categories: [
         {
           "id": 3,
           "name": "travel",
+          "modified": "2020-05-28T18:17:29.257Z"
+        },
+        {
+          "id": 4,
+          "name": "food",
           "modified": "2020-05-28T18:17:29.257Z"
         }
       ]
@@ -161,17 +196,18 @@ class App extends Component {
     return (
       <ApiContext.Provider value={value}>
         <div className='App'>
-          <nav className='App__nav'>
-            {this.renderNavRoutes()}
-          </nav>
-          <div class="App__main-container">
-            <header className='App__header'>
-              <h1>
-                <Link to='/'>ClipIt</Link>
-                {' '}
-                <FontAwesomeIcon icon='check-double' />
-              </h1>
-            </header>
+          <header className='App__header'>
+            <h1>
+              <Link to='/'>ClipIt</Link>
+              {' '}
+              <FontAwesomeIcon icon='check-double' />
+            </h1>
+          </header>
+          
+          <div className="App__main-container">
+            <nav className='App__nav'>
+              {this.renderNavRoutes()}
+            </nav>
             <main className='App__main'>
               {this.renderMainRoutes()}
             </main>
