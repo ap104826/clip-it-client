@@ -41,7 +41,7 @@ export default class Bookmark extends React.Component {
     const { title, id, modified, category_id } = this.props
     return (
       <div className='Bookmark'>
-        <img src='https://via.placeholder.com/200' width='200'/>
+        <img src='https://fitnessreloaded.com/wp-content/uploads/brizy/166/assets/images/iW=1328&iH=745&oX=0&oY=132&cW=1328&cH=480/different-types-of-planks-1_p9lri3.jpg' width='250'/>
         <h2 className='Bookmark__title'>
           <Link to={`/bookmark/${id}`}>
             {title}
