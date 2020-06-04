@@ -14,6 +14,17 @@ export default class BookmarkListNav extends React.Component {
     return (
       <div className='BookmarkListNav'>
         <ul className='BookmarkListNav__list'>
+          <li key='all'>
+            <NavLink
+              className='BookmarkListNav__category-link'
+              to={`/`}
+            >
+              <span className='BookmarkListNav__num-bookmarks'>
+                {countBookmarksForCategory(bookmarks, null)}
+              </span>
+              All
+            </NavLink>
+          </li>
           {categories.map(category =>
             <li key={category.id}>
               <NavLink
