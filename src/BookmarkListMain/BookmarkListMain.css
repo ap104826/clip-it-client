@@ -1,28 +1,5 @@
 .BookmarkList {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
   padding: 0px;
   margin-left: 20px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border: 1px solid black none;
-  background-color: #eee;
   text-align: center;
-
-}
-
-.BookmarkListItem {
-  padding: 20px 0px;
-    font-weight: 600;
-
-  
-}
-
-.BookmarkListMain ul {
-  list-style-type: none;
-}
-
-.BookmarkListMain__button-container {
-  max-width: 380px;
 }

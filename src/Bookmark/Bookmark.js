@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
+import { Button, Card } from 'react-bootstrap'
+
 import config from '../config'
 import './Bookmark.css'
 
@@ -40,36 +42,13 @@ export default class Bookmark extends React.Component {
   render() {
     const { title, id, modified, category_id, thumbnail_url } = this.props
     return (
-      <div className='Bookmark'>
-        <img src={thumbnail_url}  />
-        <h2 className='Bookmark__title'>
-          <Link to={`/bookmark/${id}`}>
-            {title}
-          </Link>
-        </h2>
-        <p className='Bookmark__description'>
-          We’ve all heard of the plank – what we may or may not realize is how many different types of
-        </p>
-        <div className='Bookmark__footer'>
-          <div className='Bookmark__category'>
-            <span className='Date'>
-              travel
-            </span>
-          </div>
-          <div className='Bookmark__footer-buttons'>
-            <button
-              className='Bookmark__delete'
-              type='button'
-              onClick={this.handleClickDelete}
-            >
-              <FontAwesomeIcon icon='trash-alt' />
-              {' '}
-              remove
-            </button>
-          </div>
-          
-        </div>
-      </div>
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src="https://via.placeholder.com/50" />
+        <Card.Body>
+          <Card.Title>{title}</Card.Title>
+          <Button variant="danger" onClick={this.handleClickDelete}>Delete</Button>
+        </Card.Body>
+      </Card>
     )
   }
 }

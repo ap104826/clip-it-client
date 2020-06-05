@@ -29,7 +29,17 @@ class App extends Component {
     this.setState({
       bookmarks: [
         {
-          "id": 5,
+          "id": 1,
+          "title": "Want Abs? 14 Different Types of Planks From Beginner To Advanced(images).– Fitness Reloaded",
+          "category_id": null,
+          "thumbnail_url": "https://i.kinja-img.com/gawker-media/image/upload/c_fill,…,g_center,h_675,pg_1,q_80,w_1200/y3dq8nnotupwjhljdyxe.jpg",
+          "description": null,
+          "is_favorite": null,
+          "link": "https://fitnessreloaded.com/different-types-of-planks/",
+          "modified": "2020-05-28T18:18:49.984Z"
+        },
+        {
+          "id": 2,
           "title": "Want Abs? 14 Different Types of Planks From Beginner To Advanced(images).– Fitness Reloaded",
           "category_id": null,
           "thumbnail_url": "https://i.kinja-img.com/gawker-media/image/upload/c_fill,…,g_center,h_675,pg_1,q_80,w_1200/y3dq8nnotupwjhljdyxe.jpg",
@@ -40,14 +50,14 @@ class App extends Component {
         },
         {
           "id": 3,
-          "title": "facebook",
+          "title": "Want Abs? 14 Different Types of Planks From Beginner To Advanced(images).– Fitness Reloaded",
           "category_id": null,
-          "thumbnail_url": null,
+          "thumbnail_url": "https://i.kinja-img.com/gawker-media/image/upload/c_fill,…,g_center,h_675,pg_1,q_80,w_1200/y3dq8nnotupwjhljdyxe.jpg",
           "description": null,
-          "is_favorite": true,
-          "link": "www.yahoo.com",
-          "modified": "2020-05-28T17:38:32.868Z"
-        },
+          "is_favorite": null,
+          "link": "https://fitnessreloaded.com/different-types-of-planks/",
+          "modified": "2020-05-28T18:18:49.984Z"
+        }
       ],
       categories: [
         {

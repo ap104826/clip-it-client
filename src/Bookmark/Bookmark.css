@@ -1,7 +1,6 @@
 
 .Bookmark {
   --bookmark-height: 400px;
-  background-color: #D7E8D4;
   height: var(--bookmark-height);
   width: 320px;
   padding: 10px 0 8px 8px;

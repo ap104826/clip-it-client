@@ -7,6 +7,7 @@ import {
 import { BrowserRouter } from 'react-router-dom'
 import 'typeface-roboto'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './bootstrap-overrides.css'
 import './index.css'
 import App from './App/App'
 

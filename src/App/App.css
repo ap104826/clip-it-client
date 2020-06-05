@@ -50,6 +50,7 @@ a:hover {
 }
 
 .App__main {
+  background: #f5f5f5;
   overflow: auto;
   display: flex;
   flex-direction: row;
