@@ -160,7 +160,7 @@ class App extends Component {
             <h1>
               <Link to='/'>ClipIt</Link>
               {' '}
-              <FontAwesomeIcon icon='bookmark' />
+              <FontAwesomeIcon icon='bookmark' color='#4ec281' />
             </h1>
             <div className='BookmarkListNav__button-wrapper'>
               <CircleButton

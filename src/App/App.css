@@ -2,6 +2,13 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
 
 .App {
   display: flex;
@@ -17,22 +24,29 @@
 }
 
 .App__nav {
-  background: #D7E8D4;
+  background: #4ec281;
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0%;
 }
 
 .App__header {
-  background: yellowgreen;
   display: flex;
   justify-content: space-between;
 }
 
 .App__header a {
+  color: #4ec281;
   font-family: var(--custom-font);
   padding: 8px 16px;
   text-decoration: none;
+}
+
+.App__header h1 {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 0px;
 }
 
 .App__main {

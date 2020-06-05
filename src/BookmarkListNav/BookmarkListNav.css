@@ -12,11 +12,12 @@
   margin: 20px auto;
 }
 .BookmarkListNav__add-category-button:hover {
-  background-color: #29862e;
+  background-color: #4ec281;
   color: white;
 }
 
 .BookmarkListNav__category-link {
+  color: white;
   display: block;
   font-family: var(--custom-font);
   font-size: 20px;
@@ -26,11 +27,12 @@
   text-decoration: none;
 }
 .BookmarkListNav__category-link:hover {
-  color: #FFB72F;
+  color: white;
   cursor: pointer;
 }
 .BookmarkListNav__category-link.active {
-  background-color: #102541;
+  color: #4ec281;
+  background-color: white;
 }
 
 .BookmarkListNav__num-bookmarks {

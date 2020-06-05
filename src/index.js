@@ -6,9 +6,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { BrowserRouter } from 'react-router-dom'
 import 'typeface-roboto'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import App from './App/App'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faBookmark, faShare)
 
