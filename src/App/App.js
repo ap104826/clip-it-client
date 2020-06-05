@@ -48,46 +48,6 @@ class App extends Component {
           "link": "www.yahoo.com",
           "modified": "2020-05-28T17:38:32.868Z"
         },
-        {
-          "id": 4,
-          "title": "facebook",
-          "category_id": null,
-          "thumbnail_url": null,
-          "description": null,
-          "is_favorite": null,
-          "link": "www.google.com",
-          "modified": "2020-05-28T17:48:21.874Z"
-        },
-        {
-          "id": 7,
-          "title": "yahoo bookmark",
-          "category_id": null,
-          "thumbnail_url": null,
-          "description": null,
-          "is_favorite": null,
-          "link": "www.yahoo.com",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 9,
-          "title": "facebook",
-          "category_id": null,
-          "thumbnail_url": null,
-          "description": null,
-          "is_favorite": true,
-          "link": "www.yahoo.com",
-          "modified": "2020-05-28T17:38:32.868Z"
-        },
-        {
-          "id": 8,
-          "title": "facebook",
-          "category_id": null,
-          "thumbnail_url": null,
-          "description": null,
-          "is_favorite": null,
-          "link": "www.google.com",
-          "modified": "2020-05-28T17:48:21.874Z"
-        }
       ],
       categories: [
         {
@@ -174,7 +134,7 @@ class App extends Component {
         />
         <Route
           path='/add-category'
-          component={AddCategory}
+          render={(props) => <AddCategory {...props} />}
         />
         <Route
           path='/add-bookmark'
