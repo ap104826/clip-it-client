@@ -62,15 +62,6 @@ export default class Bookmark extends React.Component {
               type='button'
               onClick={this.handleClickDelete}
             >
-              <FontAwesomeIcon icon='share' />
-              {' '}
-              share
-            </button>
-            <button
-              className='Bookmark__delete'
-              type='button'
-              onClick={this.handleClickDelete}
-            >
               <FontAwesomeIcon icon='trash-alt' />
               {' '}
               remove
