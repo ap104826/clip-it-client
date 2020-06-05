@@ -10,12 +10,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './bootstrap-overrides.css'
 import './index.css'
 import App from './App/App'
+import { Container } from 'react-bootstrap'
 
 library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faBookmark, faShare)
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Container fluid>
+      <App />
+    </Container>
   </BrowserRouter>,
   document.getElementById('root')
 )

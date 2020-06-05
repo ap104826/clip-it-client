@@ -9,6 +9,10 @@
   align-items: center;
 }
 
+.Bookmark__title {
+  font-size: 0.85rem;
+}
+
 .Bookmark__description {
   flex: 1;
 }
@@ -36,17 +40,13 @@
   font-weight: bold;
 }
 
-.Bookmark__title {
-  font-family: var(--custom-font);
-  font-size: 20px;
-  margin: 10px 0px;
-}
 .Bookmark__title a {
+  color: slategrey;
   display: block;
   text-decoration: none;
 }
 .Bookmark__title a:hover {
-  color: #FFB72F;
+  color: #4ec281;
 }
 
 .Bookmark__footer {

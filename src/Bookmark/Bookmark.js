@@ -4,8 +4,6 @@ import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
 import { Button, Card } from 'react-bootstrap'
-import image1 from '../images/1.jpg'
-
 import config from '../config'
 import './Bookmark.css'
 
@@ -41,12 +39,14 @@ export default class Bookmark extends React.Component {
   }
 
   render() {
-    const { title, id, modified, category_id, thumbnail_url } = this.props
+    const { title, id, modified, category_id, link, thumbnail_url } = this.props
     return (
-      <Card style={{ width: '18rem' }} key={id}>
-        <Card.Img variant="top" src={image1} />
+      <Card key={id}>
+        <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/${thumbnail_url}`} />
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
+          <Card.Title className='Bookmark__title'>
+            <a href={link}>{title}</a>
+          </Card.Title>
           <Button variant="danger" onClick={this.handleClickDelete}>Delete</Button>
         </Card.Body>
       </Card>
