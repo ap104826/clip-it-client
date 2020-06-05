@@ -5,6 +5,7 @@ import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { countBookmarksForCategory } from '../bookmarks-helpers'
 import './BookmarkListNav.css'
+import { Badge } from 'react-bootstrap'
 
 export default class BookmarkListNav extends React.Component {
   static contextType = ApiContext;
@@ -19,10 +20,10 @@ export default class BookmarkListNav extends React.Component {
               className='BookmarkListNav__category-link'
               to={`/`}
             >
-              <span className='BookmarkListNav__num-bookmarks'>
-                {countBookmarksForCategory(bookmarks, null)}
-              </span>
               All
+              <Badge variant="light" className="ml-1">
+                {countBookmarksForCategory(bookmarks, null)}
+              </Badge>
             </NavLink>
           </li>
           {categories.map(category =>
@@ -31,15 +32,15 @@ export default class BookmarkListNav extends React.Component {
                 className='BookmarkListNav__category-link'
                 to={`/category/${category.id}`}
               >
-                <span className='BookmarkListNav__num-bookmarks'>
-                  {countBookmarksForCategory(bookmarks, category.id)}
-                </span>
                 {category.name}
+                <Badge variant="light" className="ml-1">
+                  {countBookmarksForCategory(bookmarks, category.id)}
+                </Badge>
               </NavLink>
             </li>
           )}
         </ul>
-        
+
       </div>
     )
   }
