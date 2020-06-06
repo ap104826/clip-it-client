@@ -15,11 +15,14 @@ export default class AddBookmark extends Component {
   static contextType = ApiContext;
 
   handleSubmit = e => {
+    debugger
     e.preventDefault()
     const newBookmark = {
-      id: Math.random() * 100,
+      id: this.context.bookmarks.length+1,
+      title: 'New Bookmark',
       link: e.target['bookmark-link'].value,
       category_id: parseInt(e.target['bookmark-category-id'].value),
+      thumbnail_url: 'images/1.jpg'
     }
     // fetch(`${config.API_ENDPOINT}/categories`, {
     //   method: 'POST',

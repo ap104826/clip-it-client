@@ -30,65 +30,79 @@ class App extends Component {
       bookmarks: [
         {
           "id": 1,
-          "title": "Want Abs? 14 Different Types of Planks From Beginner To Advanced(images).– Fitness Reloaded",
-          "category_id": null,
+          "title": "Airline restarts flights, cancels them again when passengers can't follow Covid-19 regulations",
+          "category_id": 1,
           "thumbnail_url": "images/1.jpg",
           "description": null,
           "is_favorite": null,
-          "link": "https://fitnessreloaded.com/different-types-of-planks/",
+          "link": "https://www.cnn.com/travel/article/lion-air-cancel-flights-coronavirus-intl-hnk/index.html",
           "modified": "2020-05-28T18:18:49.984Z"
         },
         {
           "id": 2,
-          "title": "Want Abs? 14 Different Types of Planks From Beginner To Advanced(images).– Fitness Reloaded",
-          "category_id": null,
+          "title": "Easy Homemade Ramen",
+          "category_id": 2,
           "thumbnail_url": "images/2.jpg",
           "description": null,
           "is_favorite": null,
-          "link": "https://fitnessreloaded.com/different-types-of-planks/",
+          "link": "https://www.delish.com/cooking/recipe-ideas/a26258249/homemade-ramen-recipe",
           "modified": "2020-05-28T18:18:49.984Z"
         },
         {
           "id": 3,
-          "title": "Want Abs? 14 Different Types of Planks From Beginner To Advanced(images).– Fitness Reloaded",
-          "category_id": null,
+          "title": "Grilled Fattoush with Za'atar Eggplant",
+          "category_id": 2,
           "thumbnail_url": "images/3.jpg",
           "description": null,
           "is_favorite": null,
-          "link": "https://fitnessreloaded.com/different-types-of-planks/",
+          "link": "https://www.food.com/recipe/grilled-fattoush-with-za-atar-eggplant-536442",
           "modified": "2020-05-28T18:18:49.984Z"
         },
         {
           "id": 4,
-          "title": "Want Abs? 14 Different Types of Planks From Beginner To Advanced(images).– Fitness Reloaded",
-          "category_id": null,
+          "title": "11 Great Alternatives to the Top National Parks",
+          "category_id": 1,
           "thumbnail_url": "images/5.jpg",
           "description": null,
           "is_favorite": null,
-          "link": "https://fitnessreloaded.com/different-types-of-planks/",
+          "link": "https://www.nytimes.com/2020/06/04/travel/national-parks-social-distancing-coronavirus.html",
           "modified": "2020-05-28T18:18:49.984Z"
-        }
-        ,
+        },
         {
           "id": 5,
-          "title": "Want Abs? 14 Different Types of Planks From Beginner To Advanced(images).– Fitness Reloaded",
-          "category_id": null,
-          "thumbnail_url": "images/6.jpg",
+          "title": "What we know about Art and the Mind",
+          "category_id": 3,
+          "thumbnail_url": "images/7.jpg",
           "description": null,
           "is_favorite": null,
-          "link": "https://fitnessreloaded.com/different-types-of-planks/",
+          "link": "https://www.newyorker.com/culture/cultural-comment/what-we-know-about-art-and-the-mind",
+          "modified": "2020-05-28T18:18:49.984Z"
+        },
+        {
+          "id": 6,
+          "title": "11 sustainable ways to experience Yellowstone National Park",
+          "category_id": 1,
+          "thumbnail_url": "images/8.jpg",
+          "description": null,
+          "is_favorite": null,
+          "link": "https://www.lonelyplanet.com/articles/sustainable-yellowstone",
           "modified": "2020-05-28T18:18:49.984Z"
         }
       ],
       categories: [
         {
-          "id": 3,
-          "name": "travel",
+          "id": 1,
+          "name": "Travel",
           "modified": "2020-05-28T18:17:29.257Z"
         },
         {
-          "id": 4,
-          "name": "food",
+          "id": 2,
+          "name": "Food",
+          "modified": "2020-05-28T18:17:29.257Z"
+        },
+        {
+          "id": 3,
+          "name": "Art",
           "modified": "2020-05-28T18:17:29.257Z"
         }
       ]
@@ -105,7 +119,6 @@ class App extends Component {
   }
 
   handleAddBookmark = bookmark => {
-    bookmark.title = bookmark.link
     bookmark.modified = new Date()
     this.setState({
       bookmarks: [

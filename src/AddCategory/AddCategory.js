@@ -11,12 +11,29 @@ export default class AddCategory extends Component {
       push: () => { }
     },
   }
+
   static contextType = ApiContext;
 
+  state = {
+    validated: false
+  }
+
   handleSubmit = e => {
-    e.preventDefault()
+
+    const form = e.currentTarget
+    const categoryName = e.target['category-name'].value
+    if (form.checkValidity() === false) {
+      e.preventDefault()
+      e.stopPropagation()
+      this.setState({ validated: true })
+    }
+
+    if (!categoryName) {
+      return
+    }
+
     const category = {
-      id: Math.random() * 100,
+      id: this.context.categories.length+1,
       name: e.target['category-name'].value
     }
     // fetch(`${config.API_ENDPOINT}/categories`, {
@@ -38,8 +55,10 @@ export default class AddCategory extends Component {
     //   .catch(error => {
     //     console.error({ error })
     //   })
-        this.context.addCategory(category)
-        this.props.history.push(`/`)
+
+    
+    this.context.addCategory(category)
+    this.props.history.push(`/`)
   }
 
   render() {
@@ -50,10 +69,13 @@ export default class AddCategory extends Component {
           <Row>
             <Col>
               <h2>Create a Category</h2>
-              <Form onSubmit={(e) => this.handleSubmit(e)}>
+              <Form noValidate validated={this.state.validated} onSubmit={(e) => this.handleSubmit(e)}>
                 <Form.Group controlId="addCategory">
                   <Form.Label>Name</Form.Label>
-                  <Form.Control type="text" name='category-name' placeholder="travel, food, etc." />
+                  <Form.Control type="text" required name='category-name' placeholder="travel, food, etc." />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter a category.
+                  </Form.Control.Feedback>
                 </Form.Group>
 
                 <Button variant="secondary" onClick={() => this.props.history.goBack()}>
