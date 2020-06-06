@@ -17,6 +17,7 @@ export default class CategoryListNav extends React.Component {
         <ul className='CategoryListNav__list'>
           <li key='all'>
             <NavLink
+              exact={true}
               className='CategoryListNav__category-link'
               to={`/`}
             >
