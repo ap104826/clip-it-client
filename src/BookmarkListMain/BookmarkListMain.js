@@ -18,8 +18,8 @@ export default class BookmarkListMain extends React.Component {
     const { bookmarks = [] } = this.context
     const bookmarksForCategories = getBookmarksForCategory(bookmarks, parseInt(category_id))
     return (
-        <Container fluid>
-        <Row className='BookmarkList'>
+        <Container fluid className='mt-4'>
+          <Row className='BookmarkList'>
             {bookmarksForCategories.map(bookmark =>
               <Col xs='auto' key={bookmark.id}>
                 <Bookmark

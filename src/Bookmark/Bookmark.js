@@ -50,7 +50,7 @@ export default class Bookmark extends React.Component {
   render() {
     const { title, id, modified, category_id, link, thumbnail_url } = this.props
     return (
-      <Card key={id} style={{ width: '18rem' }}>
+      <Card key={id} style={{ width: '18rem' }} className='mb-4'>
         <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/${thumbnail_url}`} />
         <Card.Body>
           <Card.Title className='Bookmark__title'>
@@ -58,12 +58,12 @@ export default class Bookmark extends React.Component {
           </Card.Title>
           <Container>
             <Row className='align-items-center'>
-              <Col md={4} className='p-0'>
+              <Col className='p-0'>
                 <Badge pill variant="secondary">
                   {this.getCategoryFromCategoryId(category_id).name}
                 </Badge>
               </Col>
-              <Col md={{ span: 4, offset: 4 }}>
+              <Col className='p-0 text-right'>
                 <Button variant="danger" onClick={this.handleClickDelete}>Delete</Button>
               </Col>
             </Row>
