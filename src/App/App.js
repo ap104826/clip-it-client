@@ -213,7 +213,7 @@ class App extends Component {
                 type='button'
                 className='BookmarkListNav__add-category-button'
               >
-                <FontAwesomeIcon icon='plus' />
+                <FontAwesomeIcon className= 'mr-1' icon='plus' />
                 Category
               </CircleButton>
               <CircleButton
@@ -221,7 +221,7 @@ class App extends Component {
                 to='/add-bookmark'
                 className='BookmarkListNav__add-category-button'
                 type='button'>
-                <FontAwesomeIcon icon='plus' />
+                <FontAwesomeIcon className='mr-1' icon='plus' />
                 Bookmark
               </CircleButton>
             </div>

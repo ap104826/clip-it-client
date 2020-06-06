@@ -33,7 +33,7 @@ export default class AddCategory extends Component {
     }
 
     const category = {
-      id: this.context.categories.length+1,
+      id: this.context.categories.length + 1,
       name: e.target['category-name'].value
     }
     // fetch(`${config.API_ENDPOINT}/categories`, {
@@ -56,7 +56,7 @@ export default class AddCategory extends Component {
     //     console.error({ error })
     //   })
 
-    
+
     this.context.addCategory(category)
     this.props.history.push(`/`)
   }
