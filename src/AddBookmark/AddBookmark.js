@@ -14,13 +14,33 @@ export default class AddBookmark extends Component {
   }
   static contextType = ApiContext;
 
+  state = {
+    validated: false
+  }
+
   handleSubmit = e => {
-    debugger
+    
+    const form = e.currentTarget
+    const bookmarkName = e.target['bookmark-link']. value
+    if (form.checkValidity() === false) {
+      e.preventDefault()
+      e.stopPropagation()
+      this.setState({ validated: true})
+    }
+
+    if (!bookmarkName){
+      return
+    }
+
+    const bookmark = {
+      id : this.context.bookmarks.length +1,
+      name: bookmarkName
+    }
     e.preventDefault()
     const newBookmark = {
       id: this.context.bookmarks.length+1,
       title: 'New Bookmark',
-      link: e.target['bookmark-link'].value,
+      link: bookmarkName,
       category_id: parseInt(e.target['bookmark-category-id'].value),
       thumbnail_url: 'images/1.jpg'
     }
@@ -52,11 +72,14 @@ export default class AddBookmark extends Component {
         <Container>
           <Row>
             <Col>
-              <h2>Create a bookmark</h2>
-              <Form onSubmit={(e) => this.handleSubmit(e)}>
-                <Form.Group controlId="bookmark-link">
+              <h2>Create a Bookmark</h2>
+              <Form noValidate validated={this.state.validated} onSubmit={(e) => this.handleSubmit(e)}>
+                <Form.Group controlId="addBookmark">
                   <Form.Label>Link</Form.Label>
-                  <Form.Control type="text" name='bookmark-link' placeholder="google.com" />
+                  <Form.Control type="text" required name='bookmark-link' placeholder="google.com" />
+                  <Form.Control.Feedback type="invalid">
+                  Please enter a bookmark.
+                  </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId="bookmark-category-select">
                   <Form.Label>Category</Form.Label>
