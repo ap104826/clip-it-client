@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BookmarkListNav component renders a .BookmarkListNav by default 1`] = `
+exports[`CategoryListNav component renders a .CategoryListNav by default 1`] = `
 <div
-  className="BookmarkListNav"
+  className="CategoryListNav"
 >
   <ul
-    className="BookmarkListNav__list"
+    className="CategoryListNav__list"
   />
   <div
-    className="BookmarkListNav__button-wrapper"
+    className="CategoryListNav__button-wrapper"
   >
     <NavCircleButton
-      className="BookmarkListNav__add-category-button"
+      className="CategoryListNav__add-category-button"
       tag={[Function]}
       to="/add-category"
       type="button"
@@ -41,9 +41,9 @@ exports[`BookmarkListNav component renders a .BookmarkListNav by default 1`] = `
 </div>
 `;
 
-exports[`BookmarkListNav component renders a link in ul for each category in array 1`] = `
+exports[`CategoryListNav component renders a link in ul for each category in array 1`] = `
 <ul
-  className="BookmarkListNav__list"
+  className="CategoryListNav__list"
 >
   <li
     key="b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
@@ -51,11 +51,11 @@ exports[`BookmarkListNav component renders a link in ul for each category in arr
     <NavLink
       activeClassName="active"
       aria-current="page"
-      className="BookmarkListNav__Category-link"
+      className="CategoryListNav__Category-link"
       to="/category/b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
     >
       <span
-        className="BookmarkListNav__num-bookmarks"
+        className="CategoryListNav__num-bookmarks"
       >
         2
       </span>
@@ -68,11 +68,11 @@ exports[`BookmarkListNav component renders a link in ul for each category in arr
     <NavLink
       activeClassName="active"
       aria-current="page"
-      className="BookmarkListNav__category-link"
+      className="CategoryListNav__category-link"
       to="/category/b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1"
     >
       <span
-        className="BookmarkListNav__num-bookmarks"
+        className="CategoryListNav__num-bookmarks"
       >
         2
       </span>
@@ -85,11 +85,11 @@ exports[`BookmarkListNav component renders a link in ul for each category in arr
     <NavLink
       activeClassName="active"
       aria-current="page"
-      className="BookmarkListNav__category-link"
+      className="CategoryListNav__category-link"
       to="/category/b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1"
     >
       <span
-        className="BookmarkListNav__num-bookmarks"
+        className="CategoryListNav__num-bookmarks"
       >
         0
       </span>

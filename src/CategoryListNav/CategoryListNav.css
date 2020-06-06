@@ -1,41 +1,40 @@
-.BookmarkListNav__list {
+.CategoryListNav__list {
   list-style-type: none;
   margin: 25px 0 0;
   padding: 0;
 }
 
-.BookmarkListNav__button-wrapper {
+.CategoryListNav__button-wrapper {
   display: flex;
 }
 
-.BookmarkListNav__add-category-button {
+.CategoryListNav__add-category-button {
   margin: 20px auto;
 }
-.BookmarkListNav__add-category-button:hover {
+.CategoryListNav__add-category-button:hover {
   background-color: #4ec281;
   color: white;
 }
 
-.BookmarkListNav__category-link {
+.CategoryListNav__category-link {
   color: white;
   display: block;
   font-family: var(--custom-font);
-  font-size: 20px;
   margin: 0 0 8px auto;
   max-width: 180px;
   padding: 8px 16px;
   text-decoration: none;
 }
-.BookmarkListNav__category-link:hover {
+.CategoryListNav__category-link:hover {
   color: white;
   cursor: pointer;
 }
-.BookmarkListNav__category-link.active {
+.CategoryListNav__category-link.active {
   color: #4ec281;
   background-color: white;
 }
 
-.BookmarkListNav__num-bookmarks {
+.CategoryListNav__num-bookmarks {
   color: #adadad;
   display: block;
   float: right;

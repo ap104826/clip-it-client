@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import BookmarkListNav from '../BookmarkListNav/BookmarkListNav'
-import BookmarkPageNav from '../BookmarkPageNav/BookmarkPageNav'
+import CategoryListNav from '../CategoryListNav/CategoryListNav'
 import BookmarkListMain from '../BookmarkListMain/BookmarkListMain'
 import BookmarkPageMain from '../BookmarkPageMain/BookmarkPageMain'
 import AddCategory from '../AddCategory/AddCategory'
@@ -142,20 +141,16 @@ class App extends Component {
             exact
             key={path}
             path={path}
-            component={BookmarkListNav}
+            component={CategoryListNav}
           />
         )}
         <Route
-          path='/bookmark/:bookmarkId'
-          component={BookmarkPageNav}
-        />
-        <Route
           path='/add-category'
-          component={BookmarkPageNav}
+          component={CategoryListNav}
         />
         <Route
           path='/add-bookmark'
-          component={BookmarkPageNav}
+          component={CategoryListNav}
         />
       </>
     )
@@ -206,20 +201,20 @@ class App extends Component {
               {' '}
               <FontAwesomeIcon icon='bookmark' color='#4ec281' />
             </h1>
-            <div className='BookmarkListNav__button-wrapper'>
+            <div className='CategoryListNav__button-wrapper'>
               <CircleButton
                 tag={Link}
                 to='/add-category'
                 type='button'
-                className='BookmarkListNav__add-category-button'
+                className='CategoryListNav__add-category-button'
               >
-                <FontAwesomeIcon className= 'mr-1' icon='plus' />
+                <FontAwesomeIcon className='mr-1' icon='plus' />
                 Category
               </CircleButton>
               <CircleButton
                 tag={Link}
                 to='/add-bookmark'
-                className='BookmarkListNav__add-category-button'
+                className='CategoryListNav__add-category-button'
                 type='button'>
                 <FontAwesomeIcon className='mr-1' icon='plus' />
                 Bookmark

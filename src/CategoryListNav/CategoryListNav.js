@@ -4,20 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { countBookmarksForCategory } from '../bookmarks-helpers'
-import './BookmarkListNav.css'
+import './CategoryListNav.css'
 import { Badge } from 'react-bootstrap'
 
-export default class BookmarkListNav extends React.Component {
+export default class CategoryListNav extends React.Component {
   static contextType = ApiContext;
 
   render() {
     const { categories = [], bookmarks = [] } = this.context
     return (
-      <div className='BookmarkListNav'>
-        <ul className='BookmarkListNav__list'>
+      <div className='CategoryListNav'>
+        <ul className='CategoryListNav__list'>
           <li key='all'>
             <NavLink
-              className='BookmarkListNav__category-link'
+              className='CategoryListNav__category-link'
               to={`/`}
             >
               All
@@ -29,7 +29,7 @@ export default class BookmarkListNav extends React.Component {
           {categories.map(category =>
             <li key={category.id}>
               <NavLink
-                className='BookmarkListNav__category-link'
+                className='CategoryListNav__category-link'
                 to={`/category/${category.id}`}
               >
                 {category.name}

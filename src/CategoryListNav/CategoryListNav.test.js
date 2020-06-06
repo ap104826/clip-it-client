@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import BookmarkListNav from './BookmarkListNav'
+import CategoryListNav from './CategoryListNav'
 
-describe(`BookmarkListNav component`, () => {
-  it('renders a .BookmarkListNav by default', () => {
-    const wrapper = shallow(<BookmarkListNav />)
+describe(`CategoryListNav component`, () => {
+  it('renders a .CategoryListNav by default', () => {
+    const wrapper = shallow(<CategoryListNav />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
@@ -57,7 +57,7 @@ describe(`BookmarkListNav component`, () => {
         }
       ]
     }
-    const ul = shallow(<BookmarkListNav />, context)
+    const ul = shallow(<CategoryListNav />, context)
       .find('ul')
     expect(toJson(ul)).toMatchSnapshot()
   })
