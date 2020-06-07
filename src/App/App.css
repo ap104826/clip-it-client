@@ -36,7 +36,7 @@ a:hover {
 .App__header a {
   color: #4ec281;
   font-family: var(--custom-font);
-  padding: 8px 16px;
+  padding: 8px 10px;
   text-decoration: none;
 }
 

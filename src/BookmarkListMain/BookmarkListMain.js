@@ -13,21 +13,37 @@ export default class BookmarkListMain extends React.Component {
   }
   static contextType = ApiContext
 
+  categorySelected(e) {
+    const categoryId = e.target.value
+    if (categoryId == 'all') {
+      this.props.history.push('/')
+      return
+    }
+
+    this.props.history.push(`/category/${categoryId}`)
+
+  }
+
   render() {
     const { category_id } = this.props.match.params
-    const { bookmarks = [] } = this.context
+    const { bookmarks = [], categories = [] } = this.context
     const bookmarksForCategories = getBookmarksForCategory(bookmarks, parseInt(category_id))
     return (
         <Container fluid className='mt-4'>
         <Row className='d-sm-none'>
-            <Col>
+            <Col className='text-center'>
               <label>Categories</label>
-              <select>
-                <option>All</option>
+              <select className='ml-1 ' onChange={(e) => this.categorySelected(e)} value={category_id}>
+                <option key='all' value='all'>All</option>
+                {categories.map(category =>
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                )}
               </select>
             </Col>
           </Row>
-          <Row className='BookmarkList'>
+        <Row className='BookmarkList justify-content-center justify-content-sm-start'>
             {bookmarksForCategories.map(bookmark =>
               <Col xs='auto' key={bookmark.id}>
                 <Bookmark
