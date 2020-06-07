@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/clip-it-client/precache-manifest.974344d177c321ced1dcd7f475c5f197.js"
+  "/clip-it-client/precache-manifest.ce47d16a0e9bf9f1b0f1bd94270619e9.js"
 );
 
 workbox.clientsClaim();

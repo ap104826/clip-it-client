@@ -1,16 +1,16 @@
 {
   "main.css": "/clip-it-client/static/css/main.241781e3.chunk.css",
-  "main.js": "/clip-it-client/static/js/main.1d8e83de.chunk.js",
-  "main.js.map": "/clip-it-client/static/js/main.1d8e83de.chunk.js.map",
+  "main.js": "/clip-it-client/static/js/main.9c134a71.chunk.js",
+  "main.js.map": "/clip-it-client/static/js/main.9c134a71.chunk.js.map",
   "static/css/1.221b15d7.chunk.css": "/clip-it-client/static/css/1.221b15d7.chunk.css",
-  "static/js/1.0336d9b8.chunk.js": "/clip-it-client/static/js/1.0336d9b8.chunk.js",
-  "static/js/1.0336d9b8.chunk.js.map": "/clip-it-client/static/js/1.0336d9b8.chunk.js.map",
+  "static/js/1.b1bb9364.chunk.js": "/clip-it-client/static/js/1.b1bb9364.chunk.js",
+  "static/js/1.b1bb9364.chunk.js.map": "/clip-it-client/static/js/1.b1bb9364.chunk.js.map",
   "runtime~main.js": "/clip-it-client/static/js/runtime~main.9626af10.js",
   "runtime~main.js.map": "/clip-it-client/static/js/runtime~main.9626af10.js.map",
   "static/media/index.css": "/clip-it-client/static/media/roboto-latin-900italic.bc833e72.woff",
-  "static/css/1.221b15d7.chunk.css.map": "/clip-it-client/static/css/1.221b15d7.chunk.css.map",
   "static/css/main.241781e3.chunk.css.map": "/clip-it-client/static/css/main.241781e3.chunk.css.map",
+  "static/css/1.221b15d7.chunk.css.map": "/clip-it-client/static/css/1.221b15d7.chunk.css.map",
   "index.html": "/clip-it-client/index.html",
-  "precache-manifest.974344d177c321ced1dcd7f475c5f197.js": "/clip-it-client/precache-manifest.974344d177c321ced1dcd7f475c5f197.js",
+  "precache-manifest.ce47d16a0e9bf9f1b0f1bd94270619e9.js": "/clip-it-client/precache-manifest.ce47d16a0e9bf9f1b0f1bd94270619e9.js",
   "service-worker.js": "/clip-it-client/service-worker.js"
 }
