@@ -1,7 +1,7 @@
 {
   "main.css": "/clip-it-client/static/css/main.241781e3.chunk.css",
-  "main.js": "/clip-it-client/static/js/main.39ae7d85.chunk.js",
-  "main.js.map": "/clip-it-client/static/js/main.39ae7d85.chunk.js.map",
+  "main.js": "/clip-it-client/static/js/main.1d8e83de.chunk.js",
+  "main.js.map": "/clip-it-client/static/js/main.1d8e83de.chunk.js.map",
   "static/css/1.221b15d7.chunk.css": "/clip-it-client/static/css/1.221b15d7.chunk.css",
   "static/js/1.0336d9b8.chunk.js": "/clip-it-client/static/js/1.0336d9b8.chunk.js",
   "static/js/1.0336d9b8.chunk.js.map": "/clip-it-client/static/js/1.0336d9b8.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/css/1.221b15d7.chunk.css.map": "/clip-it-client/static/css/1.221b15d7.chunk.css.map",
   "static/css/main.241781e3.chunk.css.map": "/clip-it-client/static/css/main.241781e3.chunk.css.map",
   "index.html": "/clip-it-client/index.html",
-  "precache-manifest.77f685ba656b684aef6b0b425e6fa390.js": "/clip-it-client/precache-manifest.77f685ba656b684aef6b0b425e6fa390.js",
+  "precache-manifest.974344d177c321ced1dcd7f475c5f197.js": "/clip-it-client/precache-manifest.974344d177c321ced1dcd7f475c5f197.js",
   "service-worker.js": "/clip-it-client/service-worker.js"
 }
