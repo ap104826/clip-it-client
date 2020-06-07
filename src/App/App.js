@@ -223,7 +223,7 @@ class App extends Component {
           </header>
 
           <div className="App__main-container">
-            <nav className='App__nav'>
+            <nav className='App__nav d-sm-block'>
               {this.renderNavRoutes()}
             </nav>
             <main className='App__main'>
