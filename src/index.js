@@ -4,7 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faBookmark, faShare
 } from '@fortawesome/free-solid-svg-icons'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import 'typeface-roboto'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './bootstrap-overrides.css'
@@ -15,10 +15,10 @@ import { Container } from 'react-bootstrap'
 library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faBookmark, faShare)
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <Container fluid>
       <App />
     </Container>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root')
 )
