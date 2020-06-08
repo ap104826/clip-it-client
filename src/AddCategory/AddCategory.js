@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ClipitForm from '../ClipitForm/ClipitForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import './AddCategory.css'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 
 export default class AddCategory extends Component {
@@ -36,29 +35,26 @@ export default class AddCategory extends Component {
       id: this.context.categories.length + 1,
       name: e.target['category-name'].value
     }
-    // fetch(`${config.API_ENDPOINT}/categories`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json'
-    //   },
-    //   body: JSON.stringify(category),
-    // })
-    //   .then(res => {
-    //     if (!res.ok)
-    //       return res.json().then(e => Promise.reject(e))
-    //     return res.json()
-    //   })
-    //   .then(category => {
-    //     this.context.addCategory(category)
-    //     this.props.history.push(`/category/${category.id}`)
-    //   })
-    //   .catch(error => {
-    //     console.error({ error })
-    //   })
+    fetch(`${config.API_ENDPOINT}/categories`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(category),
+    })
+      .then(res => {
+        if (!res.ok)
+          return res.json().then(e => Promise.reject(e))
+        return res.json()
+      })
+      .then(category => {
+        this.context.addCategory(category)
+        this.props.history.push(`/category/${category.id}`)
+      })
+      .catch(error => {
+        console.error({ error })
+      })
 
-
-    this.context.addCategory(category)
-    this.props.history.push(`/`)
   }
 
   render() {

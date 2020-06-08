@@ -41,7 +41,7 @@ export default class Bookmark extends React.Component {
   getCategoryFromCategoryId(categoryId) {
 
     if (!categoryId) {
-      return { name: 'empty' }
+      return { name: '' }
     }
 
     return this.context.categories.find(category => category.id === categoryId)
@@ -51,7 +51,7 @@ export default class Bookmark extends React.Component {
     const { title, id, modified, category_id, link, thumbnail_url } = this.props
     return (
       <Card key={id} style={{ width: '18rem' }} className='mb-4'>
-        <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/${thumbnail_url}`} />
+        <Card.Img variant="top" src={`${thumbnail_url}`} />
         <Card.Body>
           <Card.Title className='Bookmark__title'>
             <a href={link} target='_blank'>{title}</a>
@@ -59,7 +59,7 @@ export default class Bookmark extends React.Component {
           <Container>
             <Row className='align-items-center'>
               <Col className='p-0'>
-                <Badge pill variant="secondary">
+                <Badge pill variant="secondary" className={`${category_id ? '' : 'd-none'}`}>
                   {this.getCategoryFromCategoryId(category_id).name}
                 </Badge>
               </Col>

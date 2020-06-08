@@ -19,50 +19,47 @@ export default class AddBookmark extends Component {
   }
 
   handleSubmit = e => {
-    
+
     const form = e.currentTarget
-    const bookmarkName = e.target['bookmark-link']. value
+    const bookmarkName = e.target['bookmark-link'].value
     if (form.checkValidity() === false) {
       e.preventDefault()
       e.stopPropagation()
-      this.setState({ validated: true})
+      this.setState({ validated: true })
     }
 
-    if (!bookmarkName){
+    if (!bookmarkName) {
       return
     }
 
     const bookmark = {
-      id : this.context.bookmarks.length +1,
+      id: this.context.bookmarks.length + 1,
       name: bookmarkName
     }
     e.preventDefault()
     const newBookmark = {
-      id: this.context.bookmarks.length+1,
-      title: 'New Bookmark',
       link: bookmarkName,
-      category_id: parseInt(e.target['bookmark-category-id'].value),
-      thumbnail_url: 'images/1.jpg'
+      category_id: parseInt(e.target['bookmark-category-id'].value)
     }
-    // fetch(`${config.API_ENDPOINT}/categories`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json'
-    //   },
-    //   body: JSON.stringify(newBookmark),
-    // })
-    //   .then(res => {
-    //     if (!res.ok)
-    //       return res.json().then(e => Promise.reject(e))
-    //     return res.json()
-    //   })
-    //   .then(bookmark => {
-    this.context.addBookmark(newBookmark)
-    this.props.history.push(`/`)
-      // })
-      // .catch(error => {
-      //   console.error({ error })
-      // })
+    fetch(`${config.API_ENDPOINT}/bookmarks`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(newBookmark),
+    })
+      .then(res => {
+        if (!res.ok)
+          return res.json().then(e => Promise.reject(e))
+        return res.json()
+      })
+      .then(bookmark => {
+        this.context.addBookmark(bookmark)
+        this.props.history.push(`/`)
+      })
+      .catch(error => {
+        console.error({ error })
+      })
   }
 
   render() {
@@ -78,7 +75,7 @@ export default class AddBookmark extends Component {
                   <Form.Label>Link</Form.Label>
                   <Form.Control type="text" required name='bookmark-link' placeholder="google.com" />
                   <Form.Control.Feedback type="invalid">
-                  Please enter a bookmark.
+                    Please enter a bookmark.
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId="bookmark-category-select">
@@ -105,32 +102,7 @@ export default class AddBookmark extends Component {
         </Container>
 
 
-        {/* <ClipitForm onSubmit={this.handleSubmit}>
-          <div className='field'>
-            <label htmlFor='bookmark-link-input'>
-              Link
-            </label>
-            <input type='text' id='bookmark-link-input' name='bookmark-link' />
-          </div>
-          <div className='field'>
-            <label htmlFor='bookmark-category-select'>
-              Category
-            </label>
-            <select id='bookmark-category-select' name='bookmark-category-id'>
-              <option value={null}>...</option>
-              {categories.map(category =>
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              )}
-            </select>
-          </div>
-          <div className='buttons'>
-            <button type='submit'>
-              Add bookmark
-            </button>
-          </div>
-        </ClipitForm> */}
+
       </section>
     )
   }

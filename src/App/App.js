@@ -8,6 +8,7 @@ import AddCategory from '../AddCategory/AddCategory'
 import AddBookmark from '../AddBookmark/AddBookmark'
 import ApiContext from '../ApiContext'
 import './App.css'
+import config from '../config'
 import CircleButton from '../CircleButton/CircleButton'
 
 
@@ -17,95 +18,35 @@ class App extends Component {
     categories: [],
   };
 
+  componentDidMount() {
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/bookmarks`),
+      fetch(`${config.API_ENDPOINT}/categories`)
+    ])
+      .then(([bookmarksRes, categoriesRes]) => {
+        if (!bookmarksRes.ok)
+          return bookmarksRes.json().then(e => Promise.reject(e))
+        if (!categoriesRes.ok)
+          return categoriesRes.json().then(e => Promise.reject(e))
+
+        return Promise.all([
+          bookmarksRes.json(),
+          categoriesRes.json(),
+        ])
+      })
+      .then(([bookmarks, categories]) => {
+        this.setState({ bookmarks, categories })
+      })
+      .catch(error => {
+        console.error({ error })
+      })
+  }
+
   constructor(props) {
     super(props)
     this.handleAddBookmark = this.handleAddBookmark.bind(this)
     this.handleAddCategory = this.handleAddCategory.bind(this)
     this.handleDeleteBookmark = this.handleDeleteBookmark.bind(this)
-  }
-
-  componentDidMount() {
-    this.setState({
-      bookmarks: [
-        {
-          "id": 1,
-          "title": "Airline restarts flights, cancels them again when passengers can't follow Covid-19 regulations",
-          "category_id": 1,
-          "thumbnail_url": "images/1.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.cnn.com/travel/article/lion-air-cancel-flights-coronavirus-intl-hnk/index.html",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 2,
-          "title": "Easy Homemade Ramen",
-          "category_id": 2,
-          "thumbnail_url": "images/2.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.delish.com/cooking/recipe-ideas/a26258249/homemade-ramen-recipe",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 3,
-          "title": "Grilled Fattoush with Za'atar Eggplant",
-          "category_id": 2,
-          "thumbnail_url": "images/3.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.food.com/recipe/grilled-fattoush-with-za-atar-eggplant-536442",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 4,
-          "title": "11 Great Alternatives to the Top National Parks",
-          "category_id": 1,
-          "thumbnail_url": "images/5.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.nytimes.com/2020/06/04/travel/national-parks-social-distancing-coronavirus.html",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 5,
-          "title": "What we know about Art and the Mind",
-          "category_id": 3,
-          "thumbnail_url": "images/7.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.newyorker.com/culture/cultural-comment/what-we-know-about-art-and-the-mind",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 6,
-          "title": "11 sustainable ways to experience Yellowstone National Park",
-          "category_id": 1,
-          "thumbnail_url": "images/8.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.lonelyplanet.com/articles/sustainable-yellowstone",
-          "modified": "2020-05-28T18:18:49.984Z"
-        }
-      ],
-      categories: [
-        {
-          "id": 1,
-          "name": "Travel",
-          "modified": "2020-05-28T18:17:29.257Z"
-        },
-        {
-          "id": 2,
-          "name": "Food",
-          "modified": "2020-05-28T18:17:29.257Z"
-        },
-        {
-          "id": 3,
-          "name": "Art",
-          "modified": "2020-05-28T18:17:29.257Z"
-        }
-      ]
-    })
   }
 
   handleAddCategory = (category) => {
