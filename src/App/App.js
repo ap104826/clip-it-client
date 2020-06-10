@@ -47,6 +47,7 @@ class App extends Component {
     this.handleAddBookmark = this.handleAddBookmark.bind(this)
     this.handleAddCategory = this.handleAddCategory.bind(this)
     this.handleDeleteBookmark = this.handleDeleteBookmark.bind(this)
+    this.handleDeleteCategory = this.handleDeleteCategory.bind(this)
   }
 
   handleAddCategory = (category) => {
@@ -71,6 +72,12 @@ class App extends Component {
   handleDeleteBookmark = bookmarkId => {
     this.setState({
       bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
+    })
+  }
+
+  handleDeleteCategory = categoryId => {
+    this.setState({
+      categories: this.state.categories.filter(category => category.id !==categoryId)
     })
   }
 
@@ -130,7 +137,8 @@ class App extends Component {
       categories: this.state.categories,
       addCategory: this.handleAddCategory,
       addBookmark: this.handleAddBookmark,
-      deleteBookmark: this.handleDeleteBookmark
+      deleteBookmark: this.handleDeleteBookmark,
+      deleteCategory: this.handleDeleteCategory
     }
 
     return (

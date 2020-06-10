@@ -44,7 +44,13 @@ export default class Bookmark extends React.Component {
       return { name: '' }
     }
 
-    return this.context.categories.find(category => category.id === categoryId)
+    const category = this.context.categories.find(category => category.id === categoryId)
+
+    if (!category) {
+      return { name: '' }
+    }
+
+    return category
   }
 
   render() {
