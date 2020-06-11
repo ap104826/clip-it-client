@@ -10,7 +10,7 @@ import ApiContext from '../ApiContext'
 import './App.css'
 import config from '../config'
 import CircleButton from '../CircleButton/CircleButton'
-
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal'
 
 class App extends Component {
   state = {
@@ -75,9 +75,34 @@ class App extends Component {
     })
   }
 
-  handleDeleteCategory = categoryId => {
+  handleDeleteCategory = (confirmed) => {
+
+    if(confirmed){
+
+      fetch(`${config.API_ENDPOINT}/categories/${this.state.categoryToDelete}`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json'
+        },
+      })
+        .then(() => {
+          this.setState({
+            categories: this.state.categories.filter(category => category.id !== this.state.categoryToDelete)
+          })
+        })
+        .catch(error => {
+          console.error({ error })
+        })
+    }
+
+    this.setState({ showConfirmationModal: false })
+  }
+
+  handleShowConfirmationModal = (message, categoryId) => {
     this.setState({
-      categories: this.state.categories.filter(category => category.id !==categoryId)
+      categoryToDelete: categoryId,
+      showConfirmationModal: true,
+      confirmationMessage: message
     })
   }
 
@@ -138,12 +163,20 @@ class App extends Component {
       addCategory: this.handleAddCategory,
       addBookmark: this.handleAddBookmark,
       deleteBookmark: this.handleDeleteBookmark,
-      deleteCategory: this.handleDeleteCategory
+      deleteCategory: this.handleDeleteCategory,
+      showConfirmationModal: this.handleShowConfirmationModal
     }
 
     return (
       <ApiContext.Provider value={value}>
+        <ConfirmationModal
+          show={this.state.showConfirmationModal}
+          message={this.state.confirmationMessage}
+          handleConfirmationModal={(confirmed) => value.deleteCategory(confirmed)}>
+
+        </ConfirmationModal>
         <div className='App'>
+          
           <header className='App__header'>
             <h1>
               <Link to='/'>ClipIt</Link>
@@ -172,6 +205,7 @@ class App extends Component {
           </header>
 
           <div className="App__main-container">
+            
             <nav className='App__nav d-sm-block'>
               {this.renderNavRoutes()}
             </nav>

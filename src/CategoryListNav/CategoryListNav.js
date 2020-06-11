@@ -9,6 +9,7 @@ import { Badge } from 'react-bootstrap'
 import config from '../config'
 
 
+
 export default class CategoryListNav extends React.Component {
   static defaultProps = {
     onDeleteCategory: () => { },
@@ -18,25 +19,16 @@ export default class CategoryListNav extends React.Component {
 
   handleClickDelete = (e, categoryId) => {
     e.preventDefault()
+    //logic for modal
 
-    fetch(`${config.API_ENDPOINT}/categories/${categoryId}`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-      },
-    })
-      .then(() => {
-        this.context.deleteCategory(categoryId)
-      })
-      .catch(error => {
-        console.error({ error })
-      })
+    this.context.showConfirmationModal('Are you sure you want to delete this category?', categoryId)
   }
 
   render() {
     const { categories = [], bookmarks = [] } = this.context
     return (
       <div className='CategoryListNav'>
+
         <ul className='CategoryListNav__list'>
           <li key='all'>
             <NavLink
