@@ -1,6 +1,5 @@
 {
   "name": "clip-it-client",
-  "homepage": "https://ap104826.github.io/clip-it-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
