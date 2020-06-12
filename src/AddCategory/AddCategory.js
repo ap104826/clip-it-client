@@ -18,22 +18,16 @@ export default class AddCategory extends Component {
   }
 
   handleSubmit = e => {
-
+    e.preventDefault()
     const form = e.currentTarget
-    const categoryName = e.target['category-name'].value
-    if (form.checkValidity() === false) {
-      e.preventDefault()
-      e.stopPropagation()
-      this.setState({ validated: true })
-    }
-
-    if (!categoryName) {
-      return
+    const categoryName = form['category-name'].value
+    if (form.checkValidity() === false || !categoryName) {
+      this.setState({ validated: false })
     }
 
     const category = {
       id: this.context.categories.length + 1,
-      name: e.target['category-name'].value
+      name: categoryName
     }
     fetch(`${config.API_ENDPOINT}/categories`, {
       method: 'POST',
