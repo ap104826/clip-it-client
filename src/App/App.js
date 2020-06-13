@@ -22,6 +22,7 @@ class App extends Component {
     this.handleAddBookmark = this.handleAddBookmark.bind(this)
     this.handleAddCategory = this.handleAddCategory.bind(this)
     this.handleDeleteBookmark = this.handleDeleteBookmark.bind(this)
+    this.handleFavoriteBookmark = this.handleFavoriteBookmark.bind(this)
   }
 
   componentDidMount() {
@@ -127,11 +128,30 @@ class App extends Component {
     })
   }
 
+  handleFavoriteBookmark = bookmarkId => {
+
+    //find the bookmark with bookmarkId
+    //set isFavorite = true on that bookmark
+    this.setState(prevState => {
+      return {
+        bookmarks: prevState.bookmarks.map(bookmark => {
+          if (bookmark.id === bookmarkId) {
+            bookmark.is_favorite = true
+          }
+          return bookmark
+        })
+      }
+      
+    })
+  }
+
+
   handleDeleteBookmark = bookmarkId => {
     this.setState({
       bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
     })
   }
+  
 
   renderNavRoutes() {
     return (
@@ -189,7 +209,8 @@ class App extends Component {
       categories: this.state.categories,
       addCategory: this.handleAddCategory,
       addBookmark: this.handleAddBookmark,
-      deleteBookmark: this.handleDeleteBookmark
+      deleteBookmark: this.handleDeleteBookmark,
+      favoriteBookmark: this.handleFavoriteBookmark
     }
 
     return (
