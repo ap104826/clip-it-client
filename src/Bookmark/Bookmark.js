@@ -8,34 +8,13 @@ import config from '../config'
 import './Bookmark.css'
 
 export default class Bookmark extends React.Component {
-  static defaultProps = {
-    onDeleteBookmark: () => { },
-  }
   static contextType = ApiContext;
 
   handleClickDelete = e => {
     e.preventDefault()
     const bookmarkId = this.props.id
 
-    // fetch(`${config.API_ENDPOINT}/bookmarks/${bookmarkId}`, {
-    //   method: 'DELETE',
-    //   headers: {
-    //     'content-type': 'application/json'
-    //   },
-    // })
-    //   .then(res => {
-    //     if (!res.ok)
-    //       return res.json().then(e => Promise.reject(e))
-    //     return res.json()
-    //   })
-    //   .then(() => {
-    this.context.deleteBookmark(bookmarkId)
-    // allow parent to perform extra behaviour
-    // this.props.onDeleteBookmark(bookmarkId)
-    // })
-    // .catch(error => {
-    //   console.error({ error })
-    // })
+    this.context.showDeleteBookmarkConfirmationModal('Are you sure you want to delete this bookmark?', bookmarkId)
   }
 
   getCategoryFromCategoryId(categoryId) {

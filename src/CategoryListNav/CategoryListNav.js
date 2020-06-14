@@ -21,7 +21,7 @@ export default class CategoryListNav extends React.Component {
     e.preventDefault()
     //logic for modal
 
-    this.context.showConfirmationModal('Are you sure you want to delete this category?', categoryId)
+    this.context.showDeleteCategoryConfirmationModal('Are you sure you want to delete this category?', categoryId)
   }
 
   render() {

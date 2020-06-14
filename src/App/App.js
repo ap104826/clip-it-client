@@ -69,15 +69,35 @@ class App extends Component {
     })
   }
 
-  handleDeleteBookmark = bookmarkId => {
-    this.setState({
-      bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
-    })
+  handleDeleteBookmark = (confirmed) => {
+
+    const bookmarkId = this.state.bookmarkToDelete
+
+    if (confirmed) {
+
+      fetch(`${config.API_ENDPOINT}/bookmarks/${bookmarkId}`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json'
+        },
+      })
+      .then(() => {
+
+        this.setState({
+          bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
+        })
+      })
+      .catch(error => {
+        console.error({ error })
+      })
+    }
+
+    this.setState({ showConfirmationModal: false })
   }
 
   handleDeleteCategory = (confirmed) => {
 
-    if(confirmed){
+    if (confirmed) {
 
       fetch(`${config.API_ENDPOINT}/categories/${this.state.categoryToDelete}`, {
         method: 'DELETE',
@@ -87,6 +107,7 @@ class App extends Component {
       })
         .then(() => {
           this.setState({
+            categoryToDelete: null,
             categories: this.state.categories.filter(category => category.id !== this.state.categoryToDelete)
           })
         })
@@ -98,9 +119,17 @@ class App extends Component {
     this.setState({ showConfirmationModal: false })
   }
 
-  handleShowConfirmationModal = (message, categoryId) => {
+  handleShowDeleteCategoryConfirmationModal = (message, categoryId) => {
     this.setState({
       categoryToDelete: categoryId,
+      showConfirmationModal: true,
+      confirmationMessage: message
+    })
+  }
+
+  handleShowDeleteBookmarkConfirmationModal = (message, bookmarkId) => {
+    this.setState({
+      bookmarkToDelete: bookmarkId,
       showConfirmationModal: true,
       confirmationMessage: message
     })
@@ -164,7 +193,8 @@ class App extends Component {
       addBookmark: this.handleAddBookmark,
       deleteBookmark: this.handleDeleteBookmark,
       deleteCategory: this.handleDeleteCategory,
-      showConfirmationModal: this.handleShowConfirmationModal
+      showDeleteCategoryConfirmationModal: this.handleShowDeleteCategoryConfirmationModal,
+      showDeleteBookmarkConfirmationModal: this.handleShowDeleteBookmarkConfirmationModal
     }
 
     return (
@@ -172,11 +202,11 @@ class App extends Component {
         <ConfirmationModal
           show={this.state.showConfirmationModal}
           message={this.state.confirmationMessage}
-          handleConfirmationModal={(confirmed) => value.deleteCategory(confirmed)}>
+          handleConfirmationModal={(confirmed) => this.state.categoryToDelete ? value.deleteCategory(confirmed) : value.deleteBookmark(confirmed)}>
 
         </ConfirmationModal>
         <div className='App'>
-          
+
           <header className='App__header'>
             <h1>
               <Link to='/'>ClipIt</Link>
@@ -205,7 +235,7 @@ class App extends Component {
           </header>
 
           <div className="App__main-container">
-            
+
             <nav className='App__nav d-sm-block'>
               {this.renderNavRoutes()}
             </nav>
