@@ -6,14 +6,29 @@ import ApiContext from '../ApiContext'
 import { countBookmarksForCategory } from '../bookmarks-helpers'
 import './CategoryListNav.css'
 import { Badge } from 'react-bootstrap'
+import config from '../config'
+
+
 
 export default class CategoryListNav extends React.Component {
+  static defaultProps = {
+    onDeleteCategory: () => { },
+  }
   static contextType = ApiContext;
+ 
+
+  handleClickDelete = (e, categoryId) => {
+    e.preventDefault()
+    //logic for modal
+
+    this.context.showConfirmationModal('Are you sure you want to delete this category?', categoryId)
+  }
 
   render() {
     const { categories = [], bookmarks = [] } = this.context
     return (
       <div className='CategoryListNav'>
+
         <ul className='CategoryListNav__list'>
           <li key='all'>
             <NavLink
@@ -37,6 +52,12 @@ export default class CategoryListNav extends React.Component {
                 <Badge variant="light" className="ml-1">
                   {countBookmarksForCategory(bookmarks, category.id)}
                 </Badge>
+                <a className='ml-1' onClick={(e) => this.handleClickDelete(e, category.id)}>
+                  <FontAwesomeIcon  icon='trash' />
+                </a>
+                
+                {/* <a type="Delete" class="m1-0 icon-remove" ></a> */}
+               
               </NavLink>
             </li>
           )}

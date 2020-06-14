@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ClipitForm from '../ClipitForm/ClipitForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import './AddCategory.css'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 
 export default class AddCategory extends Component {
@@ -19,46 +18,37 @@ export default class AddCategory extends Component {
   }
 
   handleSubmit = e => {
-
+    e.preventDefault()
     const form = e.currentTarget
-    const categoryName = e.target['category-name'].value
-    if (form.checkValidity() === false) {
-      e.preventDefault()
-      e.stopPropagation()
-      this.setState({ validated: true })
-    }
-
-    if (!categoryName) {
-      return
+    const categoryName = form['category-name'].value
+    if (form.checkValidity() === false || !categoryName) {
+      this.setState({ validated: false })
     }
 
     const category = {
       id: this.context.categories.length + 1,
-      name: e.target['category-name'].value
+      name: categoryName
     }
-    // fetch(`${config.API_ENDPOINT}/categories`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json'
-    //   },
-    //   body: JSON.stringify(category),
-    // })
-    //   .then(res => {
-    //     if (!res.ok)
-    //       return res.json().then(e => Promise.reject(e))
-    //     return res.json()
-    //   })
-    //   .then(category => {
-    //     this.context.addCategory(category)
-    //     this.props.history.push(`/category/${category.id}`)
-    //   })
-    //   .catch(error => {
-    //     console.error({ error })
-    //   })
+    fetch(`${config.API_ENDPOINT}/categories`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(category),
+    })
+      .then(res => {
+        if (!res.ok)
+          return res.json().then(e => Promise.reject(e))
+        return res.json()
+      })
+      .then(category => {
+        this.context.addCategory(category)
+        this.props.history.push(`/category/${category.id}`)
+      })
+      .catch(error => {
+        console.error({ error })
+      })
 
-
-    this.context.addCategory(category)
-    this.props.history.push(`/`)
   }
 
   render() {

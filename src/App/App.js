@@ -8,8 +8,9 @@ import AddCategory from '../AddCategory/AddCategory'
 import AddBookmark from '../AddBookmark/AddBookmark'
 import ApiContext from '../ApiContext'
 import './App.css'
+import config from '../config'
 import CircleButton from '../CircleButton/CircleButton'
-
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal'
 
 class App extends Component {
   state = {
@@ -17,95 +18,36 @@ class App extends Component {
     categories: [],
   };
 
+  componentDidMount() {
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/bookmarks`),
+      fetch(`${config.API_ENDPOINT}/categories`)
+    ])
+      .then(([bookmarksRes, categoriesRes]) => {
+        if (!bookmarksRes.ok)
+          return bookmarksRes.json().then(e => Promise.reject(e))
+        if (!categoriesRes.ok)
+          return categoriesRes.json().then(e => Promise.reject(e))
+
+        return Promise.all([
+          bookmarksRes.json(),
+          categoriesRes.json(),
+        ])
+      })
+      .then(([bookmarks, categories]) => {
+        this.setState({ bookmarks, categories })
+      })
+      .catch(error => {
+        console.error({ error })
+      })
+  }
+
   constructor(props) {
     super(props)
     this.handleAddBookmark = this.handleAddBookmark.bind(this)
     this.handleAddCategory = this.handleAddCategory.bind(this)
     this.handleDeleteBookmark = this.handleDeleteBookmark.bind(this)
-  }
-
-  componentDidMount() {
-    this.setState({
-      bookmarks: [
-        {
-          "id": 1,
-          "title": "Airline restarts flights, cancels them again when passengers can't follow Covid-19 regulations",
-          "category_id": 1,
-          "thumbnail_url": "images/1.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.cnn.com/travel/article/lion-air-cancel-flights-coronavirus-intl-hnk/index.html",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 2,
-          "title": "Easy Homemade Ramen",
-          "category_id": 2,
-          "thumbnail_url": "images/2.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.delish.com/cooking/recipe-ideas/a26258249/homemade-ramen-recipe",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 3,
-          "title": "Grilled Fattoush with Za'atar Eggplant",
-          "category_id": 2,
-          "thumbnail_url": "images/3.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.food.com/recipe/grilled-fattoush-with-za-atar-eggplant-536442",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 4,
-          "title": "11 Great Alternatives to the Top National Parks",
-          "category_id": 1,
-          "thumbnail_url": "images/5.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.nytimes.com/2020/06/04/travel/national-parks-social-distancing-coronavirus.html",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 5,
-          "title": "What we know about Art and the Mind",
-          "category_id": 3,
-          "thumbnail_url": "images/7.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.newyorker.com/culture/cultural-comment/what-we-know-about-art-and-the-mind",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 6,
-          "title": "11 sustainable ways to experience Yellowstone National Park",
-          "category_id": 1,
-          "thumbnail_url": "images/8.jpg",
-          "description": null,
-          "is_favorite": null,
-          "link": "https://www.lonelyplanet.com/articles/sustainable-yellowstone",
-          "modified": "2020-05-28T18:18:49.984Z"
-        }
-      ],
-      categories: [
-        {
-          "id": 1,
-          "name": "Travel",
-          "modified": "2020-05-28T18:17:29.257Z"
-        },
-        {
-          "id": 2,
-          "name": "Food",
-          "modified": "2020-05-28T18:17:29.257Z"
-        },
-        {
-          "id": 3,
-          "name": "Art",
-          "modified": "2020-05-28T18:17:29.257Z"
-        }
-      ]
-    })
+    this.handleDeleteCategory = this.handleDeleteCategory.bind(this)
   }
 
   handleAddCategory = (category) => {
@@ -130,6 +72,37 @@ class App extends Component {
   handleDeleteBookmark = bookmarkId => {
     this.setState({
       bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
+    })
+  }
+
+  handleDeleteCategory = (confirmed) => {
+
+    if(confirmed){
+
+      fetch(`${config.API_ENDPOINT}/categories/${this.state.categoryToDelete}`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json'
+        },
+      })
+        .then(() => {
+          this.setState({
+            categories: this.state.categories.filter(category => category.id !== this.state.categoryToDelete)
+          })
+        })
+        .catch(error => {
+          console.error({ error })
+        })
+    }
+
+    this.setState({ showConfirmationModal: false })
+  }
+
+  handleShowConfirmationModal = (message, categoryId) => {
+    this.setState({
+      categoryToDelete: categoryId,
+      showConfirmationModal: true,
+      confirmationMessage: message
     })
   }
 
@@ -189,12 +162,21 @@ class App extends Component {
       categories: this.state.categories,
       addCategory: this.handleAddCategory,
       addBookmark: this.handleAddBookmark,
-      deleteBookmark: this.handleDeleteBookmark
+      deleteBookmark: this.handleDeleteBookmark,
+      deleteCategory: this.handleDeleteCategory,
+      showConfirmationModal: this.handleShowConfirmationModal
     }
 
     return (
       <ApiContext.Provider value={value}>
+        <ConfirmationModal
+          show={this.state.showConfirmationModal}
+          message={this.state.confirmationMessage}
+          handleConfirmationModal={(confirmed) => value.deleteCategory(confirmed)}>
+
+        </ConfirmationModal>
         <div className='App'>
+          
           <header className='App__header'>
             <h1>
               <Link to='/'>ClipIt</Link>
@@ -223,6 +205,7 @@ class App extends Component {
           </header>
 
           <div className="App__main-container">
+            
             <nav className='App__nav d-sm-block'>
               {this.renderNavRoutes()}
             </nav>
