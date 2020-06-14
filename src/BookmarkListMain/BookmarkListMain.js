@@ -53,7 +53,6 @@ export default class BookmarkListMain extends React.Component {
                   category_id={bookmark.category_id}
                   modified={bookmark.modified}
                   thumbnail_url={bookmark.thumbnail_url}
-                  is_favorite={bookmark.is_favorite}
                 />
               </Col>
             )}
