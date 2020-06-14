@@ -11,7 +11,6 @@ import './App.css'
 import CircleButton from '../CircleButton/CircleButton'
 
 
-
 class App extends Component {
   state = {
     bookmarks: [],
@@ -133,14 +132,11 @@ class App extends Component {
 
     //find the bookmark with bookmarkId
     //set isFavorite = true on that bookmark
-    //fetch request for put
-    fetch()
-  
     this.setState(prevState => {
       return {
         bookmarks: prevState.bookmarks.map(bookmark => {
           if (bookmark.id === bookmarkId) {
-            bookmark.is_favorite = !bookmark.is_favorite
+            bookmark.is_favorite = true
           }
           return bookmark
         })
