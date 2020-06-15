@@ -12,6 +12,10 @@ export default class BookmarkPageMain extends React.Component {
   }
   static contextType = ApiContext
 
+  handleFavoriteBookmark = bookmarkId => {
+    this.props.history.push( `/`)
+  }
+
   handleDeleteBookmark = bookmarkId => {
     this.props.history.push(`/`)
   }

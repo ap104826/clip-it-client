@@ -52,12 +52,7 @@ export default class CategoryListNav extends React.Component {
                 <Badge variant="light" className="ml-1">
                   {countBookmarksForCategory(bookmarks, category.id)}
                 </Badge>
-                <a className='ml-1' onClick={(e) => this.handleClickDelete(e, category.id)}>
-                  <FontAwesomeIcon  icon='trash' />
-                </a>
-                
-                {/* <a type="Delete" class="m1-0 icon-remove" ></a> */}
-               
+                <FontAwesomeIcon icon='trash' className='ml-1' onClick={(e) => this.handleClickDelete(e, category.id)} />
               </NavLink>
             </li>
           )}

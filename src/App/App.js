@@ -48,6 +48,7 @@ class App extends Component {
     this.handleAddCategory = this.handleAddCategory.bind(this)
     this.handleDeleteBookmark = this.handleDeleteBookmark.bind(this)
     this.handleDeleteCategory = this.handleDeleteCategory.bind(this)
+    this.handleFavoriteBookmark = this.handleFavoriteBookmark.bind(this)
   }
 
   handleAddCategory = (category) => {
@@ -68,6 +69,32 @@ class App extends Component {
       ]
     })
   }
+
+  handleFavoriteBookmark = bookmarkId => {
+
+    //find the bookmark with bookmarkId
+    //set isFavorite = true on that bookmark
+    fetch(`${config.API_ENDPOINT}/bookmarks/${bookmarkId}`, {
+      method: 'Put',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({is_favorite: true}),
+    })
+
+    this.setState(prevState => {
+      return {
+        bookmarks: prevState.bookmarks.map(bookmark => {
+          if (bookmark.id === bookmarkId) {
+            bookmark.is_favorite = !bookmark.is_favorite
+          }
+          return bookmark
+        })
+      }
+
+    })
+  }
+
 
   handleDeleteBookmark = (confirmed) => {
 
@@ -192,6 +219,7 @@ class App extends Component {
       addCategory: this.handleAddCategory,
       addBookmark: this.handleAddBookmark,
       deleteBookmark: this.handleDeleteBookmark,
+      favoriteBookmark: this.handleFavoriteBookmark,
       deleteCategory: this.handleDeleteCategory,
       showDeleteCategoryConfirmationModal: this.handleShowDeleteCategoryConfirmationModal,
       showDeleteBookmarkConfirmationModal: this.handleShowDeleteBookmarkConfirmationModal
