@@ -1,10 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
-import { Card, Container, Row, Col } from 'react-bootstrap'
-import config from '../config'
 import './Bookmark.css'
 
 export default class Bookmark extends React.Component {
@@ -45,29 +41,13 @@ export default class Bookmark extends React.Component {
 
   render() {
     const { title, id, modified, category_id, link, thumbnail_url, is_favorite } = this.props
-    console.log('is_favorite', is_favorite)
     return (
-      <Card key={id} style={{ width: '18rem' }} className='Bookmark'>
-        <Card.Img variant="top" src={`${thumbnail_url}`} />
-        <Card.Body>
-          <Card.Title className='Bookmark__title'>
+      <div key={id} className='Bookmark'>
+        <img className="Bookmark__img" src={`${thumbnail_url}`} />
+        <div className="Bookmark__body">
+          <div className='Bookmark__title'>
             <a href={link} target='_blank'>{title}</a>
-          </Card.Title>
-          {/* <Container>
-            <Row className='align-items-center'>
-              <Col className='p-0'>
-                <span className={`${category_id ? 'Bookmark__category' : 'Bookmark__category d-none'}`}>
-                  {this.getCategoryFromCategoryId(category_id).name}
-                </span>
-              </Col>
-              <Col className='p=0 text-center'>
-                <FontAwesomeIcon icon={[is_favorite ? 'fas' : 'far', 'heart']} onClick={this.handleClickFavorite} />
-              </Col>
-              <Col className='p-0 text-right'>
-                <button className="ClipIt__btn ClipIt__btn-primary" onClick={this.handleClickDelete}>Delete</button>
-              </Col>
-            </Row>
-          </Container> */}
+          </div>
           <div className="Bookmark__footer">
             <span className={`${category_id ? 'Bookmark__category' : 'Bookmark__category visibility-hidden'}`}>
               {this.getCategoryFromCategoryId(category_id).name}
@@ -77,8 +57,8 @@ export default class Bookmark extends React.Component {
 
           </div>
 
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     )
   }
 }

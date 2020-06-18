@@ -12,14 +12,31 @@
   max-width: 100%;
   margin-bottom: 1.5rem!important;
   margin-right: 1.5rem!important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+.Bookmark__img {
+  flex-shrink: 0;
+  width: 100%;
 }
 
 .Bookmark__title {
   font-size: 0.85rem;
+  margin-bottom: .75rem;
 }
 
-.Bookmark__description {
-  flex: 1;
+.Bookmark__body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
 }
 
 .Bookmark__delete {

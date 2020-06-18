@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import ClipitForm from '../ClipitForm/ClipitForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './AddBookmark.css'
-import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 
 
 export default class AddBookmark extends Component {
@@ -66,43 +64,31 @@ export default class AddBookmark extends Component {
     const { categories = [] } = this.context
     return (
       <section className='AddBookmarks'>
-        <Container>
-          <Row>
-            <Col>
-              <h2>Create a Bookmark</h2>
-              <Form noValidate validated={this.state.validated} onSubmit={(e) => this.handleSubmit(e)}>
-                <Form.Group controlId="addBookmark">
-                  <Form.Label>Link</Form.Label>
-                  <Form.Control type="text" required name='bookmark-link' placeholder="google.com" />
-                  <Form.Control.Feedback type="invalid">
-                    Please enter a bookmark.
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group controlId="bookmark-category-select">
-                  <Form.Label>Category</Form.Label>
-                  <Form.Control as="select" name='bookmark-category-id'>
-                    <option value={null}>...</option>
-                    {categories.map(category =>
-                      <option key={category.id} value={category.id}>
-                        {category.name}
-                      </option>
-                    )}
-                  </Form.Control>
-                </Form.Group>
+        <h2>Create a Bookmark</h2>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <div className="ClipIt__form-group">
+            <label>Link</label>
+            <input className="ClipIt__form-control" type="text" required name='bookmark-link' placeholder="google.com" />
+          </div>
+          <div className="ClipIt__form-group">
+            <label>Category</label>
+            <select className="ClipIt__form-control" name='bookmark-category-id'>
+              <option value={null}>...</option>
+              {categories.map(category =>
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              )}
+            </select>
+          </div>
 
-                <Button variant="secondary" onClick={() => this.props.history.goBack()}>
-                  Cancel
-                </Button>
-                <Button className='ml-1' variant="primary" type="submit">
-                  Add bookmark
-                </Button>
-              </Form>
-            </Col>
-          </Row>
-        </Container>
-
-
-
+          <button className='ClipIt__btn ClipIt__btn-secondary' onClick={() => this.props.history.goBack()}>
+            Cancel
+          </button>
+          <button className='ClipIt__btn ClipIt__btn-primary ml-1' type="submit">
+            Add bookmark
+          </button>
+        </form>
       </section>
     )
   }

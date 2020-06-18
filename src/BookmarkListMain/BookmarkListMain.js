@@ -3,7 +3,6 @@ import Bookmark from '../Bookmark/Bookmark'
 import ApiContext from '../ApiContext'
 import { getBookmarksForCategory } from '../bookmarks-helpers'
 import './BookmarkListMain.css'
-import { Container, Col, Row } from 'react-bootstrap'
 
 export default class BookmarkListMain extends React.Component {
   static defaultProps = {
