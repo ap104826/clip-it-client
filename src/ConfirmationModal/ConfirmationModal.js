@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 
 export default class ConfirmationModal extends Component {
     render() {
@@ -9,12 +9,12 @@ export default class ConfirmationModal extends Component {
             </Modal.Header>
             <Modal.Body>{this.props.message}</Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={() => this.props.handleConfirmationModal(false)}>
+                <button className="ClipIt__btn ClipIt__btn-secondary" onClick={() => this.props.handleConfirmationModal(false)}>
                     Close
-                </Button>
-                <Button variant="primary" onClick={() => this.props.handleConfirmationModal(true)}>
+                </button>
+                <button className="ClipIt__btn ClipIt__btn-primary" onClick={() => this.props.handleConfirmationModal(true)}>
                     Ok
-                </Button>
+                </button>
             </Modal.Footer>
         </Modal>)
     }
