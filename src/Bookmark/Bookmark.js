@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
-import { Badge, Button, Card, Container, Row, Col } from 'react-bootstrap'
+import { Card, Container, Row, Col } from 'react-bootstrap'
 import config from '../config'
 import './Bookmark.css'
 
@@ -37,7 +37,7 @@ export default class Bookmark extends React.Component {
     const category = this.context.categories.find(category => category.id === categoryId)
 
     if (!category) {
-      return { name: '' }
+      return { name: undefined }
     }
 
     return category
@@ -53,21 +53,29 @@ export default class Bookmark extends React.Component {
           <Card.Title className='Bookmark__title'>
             <a href={link} target='_blank'>{title}</a>
           </Card.Title>
-          <Container>
+          {/* <Container>
             <Row className='align-items-center'>
               <Col className='p-0'>
-                <Badge pill variant="secondary" className={`${category_id ? '' : 'd-none'}`}>
+                <span className={`${category_id ? 'Bookmark__category' : 'Bookmark__category d-none'}`}>
                   {this.getCategoryFromCategoryId(category_id).name}
-                </Badge>
+                </span>
               </Col>
               <Col className='p=0 text-center'>
                 <FontAwesomeIcon icon={[is_favorite ? 'fas' : 'far', 'heart']} onClick={this.handleClickFavorite} />
               </Col>
               <Col className='p-0 text-right'>
-                <Button variant="danger" onClick={this.handleClickDelete}>Delete</Button>
+                <button className="ClipIt__btn ClipIt__btn-primary" onClick={this.handleClickDelete}>Delete</button>
               </Col>
             </Row>
-          </Container>
+          </Container> */}
+          <div className="Bookmark__footer">
+            <span className={`${category_id ? 'Bookmark__category' : 'Bookmark__category visibility-hidden'}`}>
+              {this.getCategoryFromCategoryId(category_id).name}
+            </span>
+            <FontAwesomeIcon icon={[is_favorite ? 'fas' : 'far', 'heart']} onClick={this.handleClickFavorite} />
+            <button className="ClipIt__btn ClipIt__btn-primary" onClick={this.handleClickDelete}>Delete</button>
+
+          </div>
 
         </Card.Body>
       </Card>

@@ -56,8 +56,8 @@
 
 .Bookmark__footer {
   display: flex;
-  width: 300px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .Bookmark__footer-buttons {
@@ -68,8 +68,18 @@
 }
 
 .Bookmark__category {
-  flex: 1;
-  font-size: 14px;
-  margin: auto;
-  /* position: absolute; */
+  color: #fff;
+  background-color: #6c757d;
+  display: inline-block;
+  padding: .25em .4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: initial;
+  border-radius: .25rem;
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 10rem;
 }
