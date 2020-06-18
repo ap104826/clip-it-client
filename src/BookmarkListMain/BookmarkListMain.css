@@ -1,4 +1,32 @@
+.BookmarkListContainer {
+  margin-top: 1.5rem!important;
+  margin-left: 1.5rem!important;
+}
+
 .BookmarkList {
+  display: flex;
+  flex-wrap: wrap;
   margin-left: 0px;
   margin-right: 0px;
+  justify-content: center;
+}
+
+.BookmarksList__categories-dropdown {
+  margin-left: 5px;
+}
+
+.BookmarksList__categories-selection {
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .BookmarksList__categories-selection {
+    display: none!important;
+  }
+}
+
+@media (min-width: 576px) {
+  .BookmarkList {
+      justify-content: flex-start!important;
+  }
 }
