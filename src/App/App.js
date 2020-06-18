@@ -71,15 +71,15 @@ class App extends Component {
   }
 
   handleFavoriteBookmark = bookmarkId => {
-
+    const bookmark = this.state.bookmarks.find(b => b.id === bookmarkId);
     //find the bookmark with bookmarkId
     //set isFavorite = true on that bookmark
     fetch(`${config.API_ENDPOINT}/bookmarks/${bookmarkId}`, {
-      method: 'Put',
+      method: 'PUT',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify({ is_favorite: 'false' }),
+      body: JSON.stringify({ is_favorite: !bookmark.is_favorite }),
     })
 
     this.setState(prevState => {
