@@ -1,4 +1,4 @@
-#Clip it Client
+# Clip it Client
 
 ##Link to live app- http://localhost:3000/
 
