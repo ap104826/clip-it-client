@@ -17,7 +17,7 @@
 
 
 ### Screenshots of App- 
-
+<img width="1440" alt="Screen Shot 2020-06-19 at 2 13 39 PM" src="https://user-images.githubusercontent.com/56480531/85184410-9412c600-b244-11ea-984c-2d11016b953c.png">
 
 
 
