@@ -43,7 +43,7 @@ export default class Bookmark extends React.Component {
     const { title, id, modified, category_id, link, thumbnail_url, is_favorite } = this.props
     return (
       <div key={id} className='Bookmark'>
-        <img className="Bookmark__img" src={thumbnail_url ? `${thumbnail_url}` : 'https://via.placeholder.com/286x161'} />
+        <img className="Bookmark__img" src={thumbnail_url ? `${thumbnail_url}` : 'https://via.placeholder.com/286x161/4ec281/4ec281'} />
         <div className="Bookmark__body">
           <div className='Bookmark__title'>
             <a href={link} target='_blank'>{title}</a>
