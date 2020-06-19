@@ -2,9 +2,9 @@
 
 ##Link to live app- http://localhost:3000/
 
-## Documentation of API- 
+##Documentation of API- 
 
-## Screenshots of App- 
+##Screenshots of App- 
 
 ##Summary
 
