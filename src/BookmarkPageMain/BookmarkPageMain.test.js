@@ -9,7 +9,6 @@ describe(`BookmarkPageMain component`, () => {
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
-  // enzyme doesn't yet support React.createContext
   it.skip('renders a Bookmark with bookmark prop', () => {
     const props = {
       match: {
@@ -23,7 +22,6 @@ describe(`BookmarkPageMain component`, () => {
         id: `cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1`,
         name: `Dogs`,
         modified: `2019-01-03T00:00:00.000Z`,
-        // category_id: b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1,
         content: "Corporis accusamus placeat.\n \rUnde."
       }]
     }
@@ -32,7 +30,6 @@ describe(`BookmarkPageMain component`, () => {
     expect(toJson(bookmark)).toMatchSnapshot()
   })
 
-  // enzyme doesn't yet support React.createContext
   it.skip(`splits the content by \\n or \\n\\r, with a p foreach`, () => {
     const props = {
       match: {

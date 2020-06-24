@@ -9,7 +9,6 @@ describe(`BookmarkPageNav component`, () => {
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
-  // enzyme doesn't support React.createContext
   it.skip('renders a h3 with category name when in props', () => {
     const props = {
       match: {

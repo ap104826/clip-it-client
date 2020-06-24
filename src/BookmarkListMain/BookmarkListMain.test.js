@@ -9,7 +9,6 @@ describe(`BookmarkListMain component`, () => {
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
-  // enzyme doesn't yet support React.createContext
   it.skip('renders a Bookmark in ul for each bookmarks in array', () => {
     const props = {
       match: {
