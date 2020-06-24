@@ -25,12 +25,10 @@
   float: right;
   font-size: 12px;
   height: var(--bookmark-button-height);
-  /* position: relative; */
   top: calc((var(--bookmark-button-height) + 34px) * -1);
   transform-origin: right bottom;
   margin-right: 5px;
-  /* transform: rotate(-90deg); */
-  /* width: calc(var(--bookmark-height)); */
+
 }
 
 .Bookmark__delete:hover {
@@ -56,7 +54,6 @@
 }
 
 .Bookmark__footer-buttons {
-  /* padding: 10px; */
   display: flex;
   flex: 2;
   justify-content: flex-end;
@@ -66,5 +63,4 @@
   flex: 1;
   font-size: 14px;
   margin: auto;
-  /* position: absolute; */
 }

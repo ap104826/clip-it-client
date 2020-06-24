@@ -24,7 +24,6 @@ describe(`AddBookmark component`, () => {
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
-  // enzyme doesn't support React.createContext
   it.skip('renders the select options from categories', () => {
     const context = { categories: stubCategories }
     const select = shallow(<AddBookmark />, context)

@@ -72,14 +72,13 @@ class App extends Component {
 
   handleFavoriteBookmark = bookmarkId => {
 
-    //find the bookmark with bookmarkId
-    //set isFavorite = true on that bookmark
+
     fetch(`${config.API_ENDPOINT}/bookmarks/${bookmarkId}`, {
       method: 'Put',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify({is_favorite: true}),
+      body: JSON.stringify({ is_favorite: true }),
     })
 
     this.setState(prevState => {
@@ -108,15 +107,15 @@ class App extends Component {
           'content-type': 'application/json'
         },
       })
-      .then(() => {
+        .then(() => {
 
-        this.setState({
-          bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
+          this.setState({
+            bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
+          })
         })
-      })
-      .catch(error => {
-        console.error({ error })
-      })
+        .catch(error => {
+          console.error({ error })
+        })
     }
 
     this.setState({ showConfirmationModal: false })
