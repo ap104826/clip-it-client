@@ -49,7 +49,6 @@ class App extends Component {
     this.handleDeleteBookmark = this.handleDeleteBookmark.bind(this)
     this.handleDeleteCategory = this.handleDeleteCategory.bind(this)
     this.handleFavoriteBookmark = this.handleFavoriteBookmark.bind(this)
-    console.log('test')
   }
 
   handleAddCategory = (category) => {
