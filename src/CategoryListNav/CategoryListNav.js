@@ -15,13 +15,13 @@ export default class CategoryListNav extends React.Component {
     onDeleteCategory: () => { },
   }
   static contextType = ApiContext;
- 
+
 
   handleClickDelete = (e, categoryId) => {
     e.preventDefault()
-    //logic for modal
-
-    this.context.showDeleteCategoryConfirmationModal('Are you sure you want to delete this category?', categoryId)
+    if (window.confirm("Are you sure you want to delete this category?")) {
+      this.context.deleteCategory(categoryId)
+    }
   }
 
   render() {

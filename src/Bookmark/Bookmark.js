@@ -25,7 +25,9 @@ export default class Bookmark extends React.Component {
     e.preventDefault()
     const bookmarkId = this.props.id
 
-    this.context.showDeleteBookmarkConfirmationModal('Are you sure you want to delete this bookmark?', bookmarkId)
+    if (window.confirm("Are you sure you want to delete this bookmark?")) {
+      this.context.deleteBookmark(bookmarkId)
+    }
   }
 
   getCategoryFromCategoryId(categoryId) {

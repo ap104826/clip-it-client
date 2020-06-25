@@ -10,7 +10,6 @@ import ApiContext from '../ApiContext'
 import './App.css'
 import config from '../config'
 import CircleButton from '../CircleButton/CircleButton'
-import ConfirmationModal from '../ConfirmationModal/ConfirmationModal'
 
 class App extends Component {
   state = {
@@ -95,70 +94,41 @@ class App extends Component {
   }
 
 
-  handleDeleteBookmark = (confirmed) => {
+  handleDeleteBookmark = (bookmarkId) => {
 
-    const bookmarkId = this.state.bookmarkToDelete
-
-    if (confirmed) {
-
-      fetch(`${config.API_ENDPOINT}/bookmarks/${bookmarkId}`, {
-        method: 'DELETE',
-        headers: {
-          'content-type': 'application/json'
-        },
-      })
-        .then(() => {
-
-          this.setState({
-            bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
-          })
-        })
-        .catch(error => {
-          console.error({ error })
-        })
-    }
-
-    this.setState({ showConfirmationModal: false })
-  }
-
-  handleDeleteCategory = (confirmed) => {
-
-    if (confirmed) {
-
-      fetch(`${config.API_ENDPOINT}/categories/${this.state.categoryToDelete}`, {
-        method: 'DELETE',
-        headers: {
-          'content-type': 'application/json'
-        },
-      })
-        .then(() => {
-          this.setState({
-            categoryToDelete: null,
-            categories: this.state.categories.filter(category => category.id !== this.state.categoryToDelete)
-          })
-        })
-        .catch(error => {
-          console.error({ error })
-        })
-    }
-
-    this.setState({ showConfirmationModal: false })
-  }
-
-  handleShowDeleteCategoryConfirmationModal = (message, categoryId) => {
-    this.setState({
-      categoryToDelete: categoryId,
-      showConfirmationModal: true,
-      confirmationMessage: message
+    fetch(`${config.API_ENDPOINT}/bookmarks/${bookmarkId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
     })
+      .then(() => {
+
+        this.setState({
+          bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
+        })
+      })
+      .catch(error => {
+        console.error({ error })
+      })
   }
 
-  handleShowDeleteBookmarkConfirmationModal = (message, bookmarkId) => {
-    this.setState({
-      bookmarkToDelete: bookmarkId,
-      showConfirmationModal: true,
-      confirmationMessage: message
+  handleDeleteCategory = (categoryId) => {
+
+    fetch(`${config.API_ENDPOINT}/categories/${categoryId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
     })
+      .then(() => {
+        this.setState({
+          categories: this.state.categories.filter(category => category.id !== categoryId)
+        })
+      })
+      .catch(error => {
+        console.error({ error })
+      })
   }
 
   renderNavRoutes() {
@@ -220,18 +190,10 @@ class App extends Component {
       deleteBookmark: this.handleDeleteBookmark,
       favoriteBookmark: this.handleFavoriteBookmark,
       deleteCategory: this.handleDeleteCategory,
-      showDeleteCategoryConfirmationModal: this.handleShowDeleteCategoryConfirmationModal,
-      showDeleteBookmarkConfirmationModal: this.handleShowDeleteBookmarkConfirmationModal
     }
 
     return (
       <ApiContext.Provider value={value}>
-        <ConfirmationModal
-          show={this.state.showConfirmationModal}
-          message={this.state.confirmationMessage}
-          handleConfirmationModal={(confirmed) => this.state.categoryToDelete ? value.deleteCategory(confirmed) : value.deleteBookmark(confirmed)}>
-
-        </ConfirmationModal>
         <div className='App'>
 
           <header className='App__header'>
