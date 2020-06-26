@@ -3,7 +3,6 @@ import { Route, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CategoryListNav from '../CategoryListNav/CategoryListNav'
 import BookmarkListMain from '../BookmarkListMain/BookmarkListMain'
-import BookmarkPageMain from '../BookmarkPageMain/BookmarkPageMain'
 import AddCategory from '../AddCategory/AddCategory'
 import AddBookmark from '../AddBookmark/AddBookmark'
 import ApiContext from '../ApiContext'
@@ -165,10 +164,6 @@ class App extends Component {
             component={BookmarkListMain}
           />
         )}
-        <Route
-          path='/bookmark/:bookmarkId'
-          component={BookmarkPageMain}
-        />
         <Route
           path='/add-category'
           render={(props) => <AddCategory {...props} />}
