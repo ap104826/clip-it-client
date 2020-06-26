@@ -1,12 +1,15 @@
-import React from 'react';
-import toJson from 'enzyme-to-json'
-import { shallow } from 'enzyme'
-import AddCategory from './AddCategory';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AddCategory from './AddCategory'
 
 
-describe(`AddCategory component`, () => {
-  it('renders the complete form', () => {
-    const wrapper = shallow(<AddCategory />)
-    expect(toJson(wrapper)).toMatchSnapshot()
+describe.only("AddCategory renders properly", () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div')
+    ReactDOM.render(
+      <AddCategory />,
+      div
+    )
+    ReactDOM.unmountComponentAtNode(div)
   })
 })

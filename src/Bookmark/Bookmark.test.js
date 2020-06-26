@@ -1,22 +1,25 @@
-import React from 'react';
-import { shallow } from 'enzyme'
-import toJson from 'enzyme-to-json'
-import Bookmark from './Bookmark'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Bookmark from './bookmark'
 
-describe(`Bookmark component`, () => {
-  const props = {
-    id: 'a',
-    name: 'test-class-name',
-    modified: new Date(2018, 12, 15),
-  }
 
-  it('renders a .Bookmark by default', () => {
-    const wrapper = shallow(<Bookmark />)
-    expect(toJson(wrapper)).toMatchSnapshot()
-  })
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faPlus, faTrash, faChevronLeft, faTrashAlt, faCheckDouble, faBookmark, faShare, faHeart as fasHeart
+} from '@fortawesome/free-solid-svg-icons'
+import {
+  faHeart as farHeart
+} from '@fortawesome/free-regular-svg-icons'
 
-  it('renders the Boomark given props', () => {
-    const wrapper = shallow(<Bookmark {...props} />)
-    expect(toJson(wrapper)).toMatchSnapshot()
+library.add(faPlus, fasHeart, farHeart, faChevronLeft, faTrash, faTrashAlt, faCheckDouble, faBookmark, faShare)
+
+describe.only("App renders properly", () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div')
+    ReactDOM.render(
+      <Bookmark />,
+      div
+    )
+    ReactDOM.unmountComponentAtNode(div)
   })
 })

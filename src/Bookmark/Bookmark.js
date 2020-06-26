@@ -47,7 +47,6 @@ export default class Bookmark extends React.Component {
 
   render() {
     const { title, id, modified, category_id, link, thumbnail_url, is_favorite } = this.props
-    console.log('is_favorite', is_favorite)
     return (
       <Card key={id} style={{ width: '18rem' }} className='mb-4'>
         <Card.Img variant="top" src={thumbnail_url ? thumbnail_url : 'https://via.placeholder.com/286x161/4ec281/4ec281'} />
