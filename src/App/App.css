@@ -27,6 +27,16 @@ a:hover {
   flex-basis: 0%;
 }
 
+@media (min-width: 576px) {
+  .App__nav {
+    background: #4ec281;
+    display: block;
+    min-width: 180px;
+    flex-shrink: 1;
+    flex-basis: 0%;
+  }
+}
+
 .App__header {
   display: flex;
   justify-content: space-between;
@@ -41,10 +51,8 @@ a:hover {
 }
 
 .App__header h1 {
-  display: flex;
   text-align: center;
   align-items: center;
-  margin-bottom: 0px;
 }
 
 .App__main {

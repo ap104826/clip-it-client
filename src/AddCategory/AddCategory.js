@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ClipitForm from '../ClipitForm/ClipitForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 
 export default class AddCategory extends Component {
   static defaultProps = {
@@ -53,31 +52,22 @@ export default class AddCategory extends Component {
 
   render() {
     return (
-      <section className='AddCategory'>
+      <section className='AddBookmarks'>
 
-        <Container>
-          <Row>
-            <Col>
-              <h2>Create a Category</h2>
-              <Form noValidate validated={this.state.validated} onSubmit={(e) => this.handleSubmit(e)}>
-                <Form.Group controlId="addCategory">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control type="text" required name='category-name' placeholder="travel, food, etc." />
-                  <Form.Control.Feedback type="invalid">
-                    Please enter a category.
-                  </Form.Control.Feedback>
-                </Form.Group>
+        <h2>Create a Category</h2>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <div className="ClipIt__form-group">
+            <label>Name</label>
+            <input className="ClipIt__form-control" type="text" required name='category-name' placeholder="travel, food, etc." />
+          </div>
 
-                <Button variant="secondary" onClick={() => this.props.history.goBack()}>
-                  Cancel
-                </Button>
-                <Button className='ml-1' variant="primary" type="submit">
-                  Add category
-                </Button>
-              </Form>
-            </Col>
-          </Row>
-        </Container>
+          <button className='ClipIt__btn ClipIt__btn-secondary' onClick={() => this.props.history.goBack()}>
+            Cancel
+          </button>
+          <button className='ClipIt__btn ClipIt__btn-primary ml-1' variant="primary" type="submit">
+            Add category
+          </button>
+        </form>
 
       </section>
     )

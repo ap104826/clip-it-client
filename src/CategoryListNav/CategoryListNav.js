@@ -1,11 +1,10 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { countBookmarksForCategory } from '../bookmarks-helpers'
 import './CategoryListNav.css'
-import { Badge } from 'react-bootstrap'
 import config from '../config'
 
 
@@ -37,9 +36,9 @@ export default class CategoryListNav extends React.Component {
               to={`/`}
             >
               All
-              <Badge variant="light" className="ml-1">
+              <div className="CategoryListNav__num-bookmarks">
                 {countBookmarksForCategory(bookmarks, null)}
-              </Badge>
+              </div>
             </NavLink>
           </li>
           {categories.map(category =>
@@ -49,10 +48,10 @@ export default class CategoryListNav extends React.Component {
                 to={`/category/${category.id}`}
               >
                 {category.name}
-                <Badge variant="light" className="ml-1">
+                <div className="CategoryListNav__num-bookmarks">
                   {countBookmarksForCategory(bookmarks, category.id)}
-                </Badge>
-                <FontAwesomeIcon icon='trash' className='ml-1' onClick={(e) => this.handleClickDelete(e, category.id)} />
+                </div>
+                <FontAwesomeIcon icon='trash' onClick={(e) => this.handleClickDelete(e, category.id)} />
               </NavLink>
             </li>
           )}

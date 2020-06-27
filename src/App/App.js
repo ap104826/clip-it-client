@@ -220,7 +220,7 @@ class App extends Component {
 
           <div className="App__main-container">
 
-            <nav className='App__nav d-sm-block'>
+            <nav className='App__nav'>
               {this.renderNavRoutes()}
             </nav>
             <main className='App__main'>

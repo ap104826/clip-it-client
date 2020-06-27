@@ -6,11 +6,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { BrowserRouter } from 'react-router-dom'
 import 'typeface-roboto'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './bootstrap-overrides.css'
 import './index.css'
 import App from './App/App'
-import { Container } from 'react-bootstrap'
 import {
   faHeart as farHeart
 } from '@fortawesome/free-regular-svg-icons'
@@ -19,9 +16,7 @@ library.add(faPlus, fasHeart, farHeart, faChevronLeft, faTrash, faTrashAlt, faCh
 
 ReactDOM.render(
   <BrowserRouter>
-    <Container fluid>
-      <App />
-    </Container>
+    <App />
   </BrowserRouter>,
   document.getElementById('root')
 )
