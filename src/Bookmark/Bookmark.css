@@ -67,6 +67,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-width: 15rem;
 }
 
 .Bookmark__footer-buttons {
