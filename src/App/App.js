@@ -8,7 +8,8 @@ import AddBookmark from '../AddBookmark/AddBookmark'
 import ApiContext from '../ApiContext'
 import './App.css'
 import config from '../config'
-import CircleButton from '../CircleButton/CircleButton'
+import CircleButton from '../CircleButton'
+
 
 class App extends Component {
   state = {
