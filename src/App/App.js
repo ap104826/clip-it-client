@@ -206,7 +206,7 @@ class App extends Component {
                 className='CategoryListNav__add-category-button'
               >
                 <FontAwesomeIcon className='mr-1' icon='plus' />
-                Category
+                 Category
               </CircleButton>
               <CircleButton
                 tag={Link}
@@ -214,7 +214,7 @@ class App extends Component {
                 className='CategoryListNav__add-category-button'
                 type='button'>
                 <FontAwesomeIcon className='mr-1' icon='plus' />
-                Bookmark
+                 Bookmark
               </CircleButton>
             </div>
           </header>

@@ -27,8 +27,21 @@ export default class BookmarkListMain extends React.Component {
     const { category_id } = this.props.match.params
     const { bookmarks = [], categories = [] } = this.context
     const bookmarksForCategories = getBookmarksForCategory(bookmarks, parseInt(category_id))
+
+    const howTo = (
+      <div>
+        <h2>Welcome to ClipIt! Get started by:</h2>
+        <ul>
+          <li>Adding a Bookmark</li>
+          <li>Adding a Category</li>
+          <li>Adding a Bookmark with a Category</li>
+        </ul>
+      </div>
+    )
+
     return (
       <div className="BookmarkListContainer">
+
         <div className='BookmarksList__categories-selection'>
           <label>Categories</label>
           <select className='BookmarksList__categories-dropdown' onChange={(e) => this.categorySelected(e)} value={category_id}>
@@ -40,22 +53,26 @@ export default class BookmarkListMain extends React.Component {
             )}
           </select>
         </div>
-        <div className='BookmarkList'>
-          {bookmarksForCategories.map(bookmark =>
-            <Bookmark
-              id={bookmark.id}
-              title={bookmark.title}
-              link={bookmark.link}
-              key={bookmark.id}
 
-              category_id={bookmark.category_id}
-              modified={bookmark.modified}
-              thumbnail_url={bookmark.thumbnail_url}
-              is_favorite={bookmark.is_favorite}
-            />
+        {bookmarksForCategories.length === 0 ?
+          howTo :
+          <div className='BookmarkList'>
+            {bookmarksForCategories.map(bookmark =>
+              <Bookmark
+                id={bookmark.id}
+                title={bookmark.title}
+                link={bookmark.link}
+                key={bookmark.id}
 
-          )}
-        </div>
+                category_id={bookmark.category_id}
+                modified={bookmark.modified}
+                thumbnail_url={bookmark.thumbnail_url}
+                is_favorite={bookmark.is_favorite}
+              />
+
+            )}
+          </div>
+        }
       </div>
     )
   }
