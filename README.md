@@ -1,6 +1,6 @@
 # Clip it Client
 
-### Link to live app- http://localhost:3000/
+### Link to live app- https://vercel.com/ap104826/clip-it-client/ohacse4sj
 
 ### Documentation of API- 
   
